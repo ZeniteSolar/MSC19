@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:basicsensormodule-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -30,7 +31,7 @@ CAN_L
 Text Label 6550 3700 0    60   ~ 0
 CAN_H
 $Comp
-L Connector:RJ45_Shielded J602
+L basicsensormodule-rescue:RJ45_Shielded-Connector J602
 U 1 1 5A01AFBA
 P 7500 3400
 F 0 "J602" H 7700 3950 50  0000 C CNN
@@ -92,7 +93,7 @@ CAN_L
 Text Label 5000 3700 0    60   ~ 0
 CAN_H
 $Comp
-L Connector:RJ45_Shielded J601
+L basicsensormodule-rescue:RJ45_Shielded-Connector J601
 U 1 1 5BE6C2F7
 P 5950 3400
 F 0 "J601" H 6150 3950 50  0000 C CNN
@@ -134,7 +135,7 @@ Wire Wire Line
 Connection ~ 5950 4500
 Connection ~ 6500 4500
 $Comp
-L power:GND #PWR0602
+L basicsensormodule-rescue:GND-power #PWR0602
 U 1 1 5BE6CF28
 P 4950 4600
 F 0 "#PWR0602" H 4950 4350 50  0001 C CNN
@@ -160,7 +161,7 @@ Wire Wire Line
 Wire Wire Line
 	3200 3600 3100 3600
 $Comp
-L power:GND #PWR0601
+L basicsensormodule-rescue:GND-power #PWR0601
 U 1 1 5BE70223
 P 3200 3800
 F 0 "#PWR0601" H 3200 3550 50  0001 C CNN

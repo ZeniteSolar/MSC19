@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:basicsensormodule-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -123,7 +124,7 @@ Wire Wire Line
 Wire Wire Line
 	7550 4050 7400 4050
 $Comp
-L Connector:Screw_Terminal_01x04 J102
+L basicsensormodule-rescue:Screw_Terminal_01x04-Connector J102
 U 1 1 5BE60AE4
 P 1850 4000
 F 0 "J102" H 2000 3900 50  0000 C TNN
@@ -134,7 +135,7 @@ F 3 "" H 1825 4000 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Jumper:SolderJumper_3_Open JP101
+L basicsensormodule-rescue:SolderJumper_3_Open-Jumper JP101
 U 1 1 5BE60CC9
 P 2150 3150
 F 0 "JP101" H 2150 3250 50  0000 C CNN
@@ -153,7 +154,7 @@ Wire Wire Line
 Wire Wire Line
 	2150 3800 2150 3300
 $Comp
-L power:GND #PWR0104
+L basicsensormodule-rescue:GND-power #PWR0104
 U 1 1 5BE61E21
 P 2150 4200
 F 0 "#PWR0104" H 2150 3950 50  0001 C CNN
@@ -168,7 +169,7 @@ Wire Wire Line
 Wire Wire Line
 	2150 4100 2150 4200
 $Comp
-L power:GND #PWR0106
+L basicsensormodule-rescue:GND-power #PWR0106
 U 1 1 5BE62497
 P 7600 4550
 F 0 "#PWR0106" H 7600 4300 50  0001 C CNN
@@ -184,7 +185,7 @@ Connection ~ 7600 4150
 Wire Wire Line
 	7600 4150 7400 4150
 $Comp
-L power:GND #PWR0105
+L basicsensormodule-rescue:GND-power #PWR0105
 U 1 1 5BE62C48
 P 4100 4200
 F 0 "#PWR0105" H 4100 3950 50  0001 C CNN
@@ -200,7 +201,7 @@ Connection ~ 4100 4100
 Wire Wire Line
 	4100 4100 4350 4100
 $Comp
-L power:+5V #PWR0103
+L basicsensormodule-rescue:+5V-power #PWR0103
 U 1 1 5BE6342B
 P 7400 3700
 F 0 "#PWR0103" H 7400 3550 50  0001 C CNN
@@ -218,7 +219,7 @@ Connection ~ 7550 3800
 Wire Wire Line
 	7550 3800 7550 4050
 $Comp
-L power:+5V #PWR0101
+L basicsensormodule-rescue:+5V-power #PWR0101
 U 1 1 5BE64E90
 P 1850 2600
 F 0 "#PWR0101" H 1850 2450 50  0001 C CNN
@@ -231,7 +232,7 @@ $EndComp
 Wire Wire Line
 	1850 3150 1950 3150
 $Comp
-L Diode:LL4148 D101
+L basicsensormodule-rescue:LL4148-Diode D101
 U 1 1 5BE65BF3
 P 1850 2850
 F 0 "D101" V 1900 2750 50  0000 R CNN
@@ -249,7 +250,7 @@ Wire Wire Line
 	2150 3850 2150 3800
 Connection ~ 2150 3800
 $Comp
-L Device:C_Small C102
+L basicsensormodule-rescue:C_Small-Device C102
 U 1 1 5BE67608
 P 2150 3950
 F 0 "C102" H 2250 3850 50  0000 L CNN
@@ -265,7 +266,7 @@ Connection ~ 2150 4100
 Wire Wire Line
 	2350 3150 7750 3150
 $Comp
-L Mechanical:MountingHole H104
+L basicsensormodule-rescue:MountingHole-Mechanical H104
 U 1 1 5BE9AF15
 P 2950 5650
 F 0 "H104" H 3050 5700 50  0000 L CNN
@@ -276,7 +277,7 @@ F 3 "~" H 2950 5650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Mechanical:MountingHole H103
+L basicsensormodule-rescue:MountingHole-Mechanical H103
 U 1 1 5BE9BC53
 P 2950 5450
 F 0 "H103" H 3050 5500 50  0000 L CNN
@@ -287,7 +288,7 @@ F 3 "~" H 2950 5450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Mechanical:MountingHole H102
+L basicsensormodule-rescue:MountingHole-Mechanical H102
 U 1 1 5BE9BC79
 P 2950 5250
 F 0 "H102" H 3050 5300 50  0000 L CNN
@@ -298,7 +299,7 @@ F 3 "~" H 2950 5250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Mechanical:MountingHole H101
+L basicsensormodule-rescue:MountingHole-Mechanical H101
 U 1 1 5BE9BC9F
 P 2950 5050
 F 0 "H101" H 3050 5100 50  0000 L CNN

@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:basicsensormodule-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -14,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Interface_CAN_LIN:MCP2561-E-SN U201
+L basicsensormodule-rescue:MCP2561-E-SN-Interface_CAN_LIN U201
 U 1 1 59FDAEE3
 P 6450 3300
 F 0 "U201" H 6050 3650 50  0000 L CNN
@@ -29,7 +30,7 @@ TXCAN
 Text Label 5250 3100 2    60   ~ 0
 RXCAN
 $Comp
-L Interface_CAN_LIN:MCP2515-EST U202
+L basicsensormodule-rescue:MCP2515-EST-Interface_CAN_LIN U202
 U 1 1 59FDAF0B
 P 4300 3700
 F 0 "U202" H 3900 4450 50  0000 R CNN
@@ -46,7 +47,7 @@ NoConn ~ 5000 4000
 NoConn ~ 5000 4100
 NoConn ~ 5000 4200
 $Comp
-L Device:R_Small R203
+L basicsensormodule-rescue:R_Small-Device R203
 U 1 1 59FDAF39
 P 5200 4300
 F 0 "R203" V 5100 4250 50  0000 L CNN
@@ -57,7 +58,7 @@ F 3 "" H 5200 4300 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:R_Small R202
+L basicsensormodule-rescue:R_Small-Device R202
 U 1 1 59FDAF40
 P 5850 3750
 F 0 "R202" H 5880 3770 50  0000 L CNN
@@ -73,7 +74,7 @@ CAN_H
 Text Label 8200 3400 0    60   ~ 0
 CAN_L
 $Comp
-L Device:R_Small R201
+L basicsensormodule-rescue:R_Small-Device R201
 U 1 1 59FDAF5C
 P 8200 3600
 F 0 "R201" V 8050 3550 50  0000 L CNN
@@ -130,7 +131,7 @@ Wire Wire Line
 Wire Wire Line
 	5350 3200 5550 3200
 $Comp
-L Device:C_Small C201
+L basicsensormodule-rescue:C_Small-Device C201
 U 1 1 5AAC0190
 P 4400 2600
 F 0 "C201" H 4410 2670 50  0000 L CNN
@@ -142,7 +143,7 @@ F 3 "" H 4400 2600 50  0001 C CNN
 $EndComp
 Connection ~ 4300 2400
 $Comp
-L Device:D_TVS_x2_AAC D201
+L basicsensormodule-rescue:D_TVS_x2_AAC-Device D201
 U 1 1 5AAC0839
 P 8200 3900
 F 0 "D201" H 8200 4075 50  0000 C CNN
@@ -155,7 +156,7 @@ $EndComp
 Text Notes 6700 4850 0    60   Italic 0
 EMI/ESD Protection Solutions for the CAN Bus: \nhttps://www.onsemi.com/pub/Collateral/AND8169-D.PDF\nSparkFun CAN-Bus Shield:\nhttps://cdn.sparkfun.com/datasheets/Dev/Arduino/Shields/SparkFun_CAN-Bus_Shield_v13a.pdf
 $Comp
-L Connector:TestPoint TP203
+L basicsensormodule-rescue:TestPoint-Connector TP203
 U 1 1 5AAC2327
 P 5550 3050
 F 0 "TP203" H 5550 3320 50  0000 C CNN
@@ -166,7 +167,7 @@ F 3 "" H 5750 3050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:TestPoint TP204
+L basicsensormodule-rescue:TestPoint-Connector TP204
 U 1 1 5AAC23CC
 P 5550 3250
 F 0 "TP204" H 5550 3520 50  0000 C CNN
@@ -183,7 +184,7 @@ Wire Wire Line
 	5550 3250 5550 3200
 Connection ~ 5550 3200
 $Comp
-L Connector:TestPoint TP209
+L basicsensormodule-rescue:TestPoint-Connector TP209
 U 1 1 5AAC2B03
 P 5000 3650
 F 0 "TP209" H 5000 3920 50  0000 C CNN
@@ -194,7 +195,7 @@ F 3 "" H 5200 3650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:TestPoint TP201
+L basicsensormodule-rescue:TestPoint-Connector TP201
 U 1 1 5AAC2C42
 P 3550 3000
 F 0 "TP201" H 3550 3270 50  0000 C CNN
@@ -205,7 +206,7 @@ F 3 "" H 3750 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:TestPoint TP202
+L basicsensormodule-rescue:TestPoint-Connector TP202
 U 1 1 5AAC2C8C
 P 3400 3050
 F 0 "TP202" H 3400 3320 50  0000 C CNN
@@ -216,7 +217,7 @@ F 3 "" H 3600 3050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:TestPoint TP206
+L basicsensormodule-rescue:TestPoint-Connector TP206
 U 1 1 5AAC2CDB
 P 3100 3550
 F 0 "TP206" H 3100 3820 50  0000 C CNN
@@ -227,7 +228,7 @@ F 3 "" H 3300 3550 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Connector:TestPoint TP205
+L basicsensormodule-rescue:TestPoint-Connector TP205
 U 1 1 5AAC2E79
 P 3250 3450
 F 0 "TP205" H 3250 3720 50  0000 C CNN
@@ -265,7 +266,7 @@ Wire Wire Line
 	7600 3600 7650 3600
 Connection ~ 7650 3600
 $Comp
-L Connector:TestPoint TP208
+L basicsensormodule-rescue:TestPoint-Connector TP208
 U 1 1 5AAC8491
 P 8800 3600
 F 0 "TP208" V 8700 3700 50  0000 C CNN
@@ -276,7 +277,7 @@ F 3 "" H 9000 3600 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector:TestPoint TP207
+L basicsensormodule-rescue:TestPoint-Connector TP207
 U 1 1 5AAC8C25
 P 7600 3600
 F 0 "TP207" V 7500 3700 50  0000 C CNN
@@ -309,11 +310,12 @@ Wire Wire Line
 Wire Wire Line
 	8750 3600 8800 3600
 $Comp
-L Device:Crystal_Small Y?
+L basicsensormodule-rescue:Crystal_Small-Device Y?
 U 1 1 5BE72790
 P 3150 4050
 AR Path="/5AACA401/5BE72790" Ref="Y?"  Part="1" 
 AR Path="/5AABFC1B/5BE72790" Ref="Y201"  Part="1" 
+AR Path="/5BE72790" Ref="Y201"  Part="1" 
 F 0 "Y201" H 3150 4150 50  0000 C CNN
 F 1 "16MHz" H 3150 3950 50  0000 C CNN
 F 2 "Crystal:Crystal_HC49-U_Vertical" H 3150 4050 50  0001 C CNN
@@ -322,11 +324,12 @@ F 3 "http://www.farnell.com/datasheets/321153.pdf" H 3150 4050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C?
+L basicsensormodule-rescue:C_Small-Device C?
 U 1 1 5BE72797
 P 2900 4250
 AR Path="/5AACA401/5BE72797" Ref="C?"  Part="1" 
 AR Path="/5AABFC1B/5BE72797" Ref="C203"  Part="1" 
+AR Path="/5BE72797" Ref="C203"  Part="1" 
 F 0 "C203" H 2910 4320 50  0000 L CNN
 F 1 "22pF" H 2910 4170 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2900 4250 50  0001 C CNN
@@ -335,11 +338,12 @@ F 3 "" H 2900 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C?
+L basicsensormodule-rescue:C_Small-Device C?
 U 1 1 5BE7279E
 P 3400 4250
 AR Path="/5AACA401/5BE7279E" Ref="C?"  Part="1" 
 AR Path="/5AABFC1B/5BE7279E" Ref="C204"  Part="1" 
+AR Path="/5BE7279E" Ref="C204"  Part="1" 
 F 0 "C204" H 3300 4350 50  0000 L CNN
 F 1 "22pF" H 3200 4150 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3400 4250 50  0001 C CNN
@@ -379,11 +383,12 @@ Wire Wire Line
 Wire Wire Line
 	3150 4550 3150 4450
 $Comp
-L power:GND #PWR?
+L basicsensormodule-rescue:GND-power #PWR?
 U 1 1 5BE727B2
 P 3150 4550
 AR Path="/5AACA401/5BE727B2" Ref="#PWR?"  Part="1" 
 AR Path="/5AABFC1B/5BE727B2" Ref="#PWR0210"  Part="1" 
+AR Path="/5BE727B2" Ref="#PWR0210"  Part="1" 
 F 0 "#PWR0210" H 3150 4300 50  0001 C CNN
 F 1 "GND" H 3200 4350 50  0000 C CNN
 F 2 "" H 3150 4550 50  0001 C CNN
@@ -392,11 +397,12 @@ F 3 "" H 3150 4550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L basicsensormodule-rescue:GND-power #PWR?
 U 1 1 5BE91DED
 P 4400 2750
 AR Path="/5AACA401/5BE91DED" Ref="#PWR?"  Part="1" 
 AR Path="/5AABFC1B/5BE91DED" Ref="#PWR0204"  Part="1" 
+AR Path="/5BE91DED" Ref="#PWR0204"  Part="1" 
 F 0 "#PWR0204" H 4400 2500 50  0001 C CNN
 F 1 "GND" H 4450 2550 50  0000 C CNN
 F 2 "" H 4400 2750 50  0001 C CNN
@@ -405,7 +411,7 @@ F 3 "" H 4400 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0201
+L basicsensormodule-rescue:+5V-power #PWR0201
 U 1 1 5BEC2EC3
 P 4300 2350
 F 0 "#PWR0201" H 4300 2200 50  0001 C CNN
@@ -424,7 +430,7 @@ Wire Wire Line
 Wire Wire Line
 	4300 2400 4400 2400
 $Comp
-L Device:C_Small C202
+L basicsensormodule-rescue:C_Small-Device C202
 U 1 1 5BEDED38
 P 6550 2600
 F 0 "C202" H 6560 2670 50  0000 L CNN
@@ -436,11 +442,12 @@ F 3 "" H 6550 2600 50  0001 C CNN
 $EndComp
 Connection ~ 6450 2400
 $Comp
-L power:GND #PWR?
+L basicsensormodule-rescue:GND-power #PWR?
 U 1 1 5BEDED40
 P 6550 2750
 AR Path="/5AACA401/5BEDED40" Ref="#PWR?"  Part="1" 
 AR Path="/5AABFC1B/5BEDED40" Ref="#PWR0205"  Part="1" 
+AR Path="/5BEDED40" Ref="#PWR0205"  Part="1" 
 F 0 "#PWR0205" H 6550 2500 50  0001 C CNN
 F 1 "GND" H 6600 2550 50  0000 C CNN
 F 2 "" H 6550 2750 50  0001 C CNN
@@ -449,7 +456,7 @@ F 3 "" H 6550 2750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR0202
+L basicsensormodule-rescue:+5V-power #PWR0202
 U 1 1 5BEDED46
 P 6450 2350
 F 0 "#PWR0202" H 6450 2200 50  0001 C CNN
@@ -470,7 +477,7 @@ Wire Wire Line
 Wire Wire Line
 	6450 2400 6450 2900
 $Comp
-L power:+5V #PWR0203
+L basicsensormodule-rescue:+5V-power #PWR0203
 U 1 1 5BEE3281
 P 2200 2550
 F 0 "#PWR0203" H 2200 2400 50  0001 C CNN
@@ -485,11 +492,12 @@ Wire Wire Line
 Wire Wire Line
 	2200 2650 2100 2650
 $Comp
-L power:GND #PWR?
+L basicsensormodule-rescue:GND-power #PWR?
 U 1 1 5BEE701B
 P 2200 2900
 AR Path="/5AACA401/5BEE701B" Ref="#PWR?"  Part="1" 
 AR Path="/5AABFC1B/5BEE701B" Ref="#PWR0206"  Part="1" 
+AR Path="/5BEE701B" Ref="#PWR0206"  Part="1" 
 F 0 "#PWR0206" H 2200 2650 50  0001 C CNN
 F 1 "GND" H 2250 2700 50  0000 C CNN
 F 2 "" H 2200 2900 50  0001 C CNN
@@ -502,11 +510,12 @@ Wire Wire Line
 Wire Wire Line
 	2200 2800 2200 2900
 $Comp
-L power:GND #PWR?
+L basicsensormodule-rescue:GND-power #PWR?
 U 1 1 5BEE915D
 P 4300 4600
 AR Path="/5AACA401/5BEE915D" Ref="#PWR?"  Part="1" 
 AR Path="/5AABFC1B/5BEE915D" Ref="#PWR0211"  Part="1" 
+AR Path="/5BEE915D" Ref="#PWR0211"  Part="1" 
 F 0 "#PWR0211" H 4300 4350 50  0001 C CNN
 F 1 "GND" H 4350 4400 50  0000 C CNN
 F 2 "" H 4300 4600 50  0001 C CNN
@@ -515,11 +524,12 @@ F 3 "" H 4300 4600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L basicsensormodule-rescue:GND-power #PWR?
 U 1 1 5BEE919A
 P 6450 4100
 AR Path="/5AACA401/5BEE919A" Ref="#PWR?"  Part="1" 
 AR Path="/5AABFC1B/5BEE919A" Ref="#PWR0207"  Part="1" 
+AR Path="/5BEE919A" Ref="#PWR0207"  Part="1" 
 F 0 "#PWR0207" H 6450 3850 50  0001 C CNN
 F 1 "GND" H 6500 3900 50  0000 C CNN
 F 2 "" H 6450 4100 50  0001 C CNN
@@ -537,7 +547,7 @@ Wire Wire Line
 	6450 3700 6450 3950
 Connection ~ 6450 3950
 $Comp
-L Device:C_Small C205
+L basicsensormodule-rescue:C_Small-Device C205
 U 1 1 5BEF6349
 P 5550 4500
 F 0 "C205" H 5560 4570 50  0000 L CNN
@@ -550,11 +560,12 @@ $EndComp
 Wire Wire Line
 	5550 4300 5550 4400
 $Comp
-L power:GND #PWR?
+L basicsensormodule-rescue:GND-power #PWR?
 U 1 1 5BEFA640
 P 5550 4700
 AR Path="/5AACA401/5BEFA640" Ref="#PWR?"  Part="1" 
 AR Path="/5AABFC1B/5BEFA640" Ref="#PWR0212"  Part="1" 
+AR Path="/5BEFA640" Ref="#PWR0212"  Part="1" 
 F 0 "#PWR0212" H 5550 4450 50  0001 C CNN
 F 1 "GND" H 5600 4500 50  0000 C CNN
 F 2 "" H 5550 4700 50  0001 C CNN
@@ -571,11 +582,12 @@ Wire Wire Line
 Wire Wire Line
 	8300 3600 8750 3600
 $Comp
-L power:GND #PWR?
+L basicsensormodule-rescue:GND-power #PWR?
 U 1 1 5BF0D416
 P 8200 4150
 AR Path="/5AACA401/5BF0D416" Ref="#PWR?"  Part="1" 
 AR Path="/5AABFC1B/5BF0D416" Ref="#PWR0208"  Part="1" 
+AR Path="/5BF0D416" Ref="#PWR0208"  Part="1" 
 F 0 "#PWR0208" H 8200 3900 50  0001 C CNN
 F 1 "GND" H 8250 3950 50  0000 C CNN
 F 2 "" H 8200 4150 50  0001 C CNN
@@ -610,7 +622,7 @@ Wire Wire Line
 Wire Wire Line
 	3600 4100 3700 4100
 $Comp
-L power:+5V #PWR0107
+L basicsensormodule-rescue:+5V-power #PWR0107
 U 1 1 5BEBB382
 P 5550 4150
 F 0 "#PWR0107" H 5550 4000 50  0001 C CNN

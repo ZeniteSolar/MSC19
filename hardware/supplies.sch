@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:basicsensormodule-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -14,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Regulator_Linear:LM7805_TO220 U501
+L basicsensormodule-rescue:LM7805_TO220-Regulator_Linear U501
 U 1 1 5A007B62
 P 5900 3950
 F 0 "U501" H 5750 4075 50  0000 C CNN
@@ -29,7 +30,7 @@ GND
 Text HLabel 6650 3750 2    60   Input ~ 0
 +5V_OUT
 $Comp
-L Device:CP1_Small C501
+L basicsensormodule-rescue:CP1_Small-Device C501
 U 1 1 5A008895
 P 4900 4400
 F 0 "C501" H 4910 4470 50  0000 L CNN
@@ -40,7 +41,7 @@ F 3 "" H 4900 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C502
+L basicsensormodule-rescue:C_Small-Device C502
 U 1 1 5A00899A
 P 5200 4400
 F 0 "C502" H 5210 4470 50  0000 L CNN
@@ -51,7 +52,7 @@ F 3 "" H 5200 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Diode:LL4148 D501
+L basicsensormodule-rescue:LL4148-Diode D501
 U 1 1 5A009BD5
 P 4450 3950
 F 0 "D501" H 4450 4050 50  0000 C CNN
@@ -64,7 +65,7 @@ $EndComp
 Text HLabel 3950 3950 0    60   Input ~ 0
 +18V_IN
 $Comp
-L Device:C_Small C503
+L basicsensormodule-rescue:C_Small-Device C503
 U 1 1 5A00B18A
 P 6500 4400
 F 0 "C503" H 6510 4470 50  0000 L CNN
@@ -75,7 +76,7 @@ F 3 "" H 6500 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:CP1_Small C504
+L basicsensormodule-rescue:CP1_Small-Device C504
 U 1 1 5AAD0D5C
 P 6850 4400
 F 0 "C504" H 6860 4470 50  0000 L CNN
@@ -86,7 +87,7 @@ F 3 "" H 6850 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Fuse_Small F501
+L basicsensormodule-rescue:Fuse_Small-Device F501
 U 1 1 5AB12173
 P 4750 3950
 F 0 "F501" H 4750 3890 50  0000 C CNN
@@ -161,7 +162,7 @@ Connection ~ 5200 3550
 Wire Wire Line
 	5200 3450 5200 3550
 $Comp
-L power:PWR_FLAG #FLG0501
+L basicsensormodule-rescue:PWR_FLAG-power #FLG0501
 U 1 1 5BE75359
 P 5200 3450
 F 0 "#FLG0501" H 5200 3525 50  0001 C CNN
@@ -172,7 +173,7 @@ F 3 "~" H 5200 3450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:PWR_FLAG #FLG0502
+L basicsensormodule-rescue:PWR_FLAG-power #FLG0502
 U 1 1 5BE753AF
 P 5200 4900
 F 0 "#FLG0502" H 5200 4975 50  0001 C CNN
