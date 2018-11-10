@@ -29,17 +29,6 @@ Text Label 5250 3200 2    60   ~ 0
 TXCAN
 Text Label 5250 3100 2    60   ~ 0
 RXCAN
-$Comp
-L basicsensormodule-rescue:MCP2515-EST-Interface_CAN_LIN U202
-U 1 1 59FDAF0B
-P 4300 3700
-F 0 "U202" H 3900 4450 50  0000 R CNN
-F 1 "MCP2515-E/ST-SOIC18" H 5250 2950 50  0000 R TNN
-F 2 "Package_SO:SOIC-18W_7.5x11.6mm_P1.27mm" H 4300 2800 50  0001 C CIN
-F 3 "" H 4400 2900 50  0001 C CNN
-	1    4300 3700
-	1    0    0    -1  
-$EndComp
 NoConn ~ 3600 4100
 NoConn ~ 5000 3800
 NoConn ~ 5000 3900
@@ -635,4 +624,15 @@ $EndComp
 Wire Wire Line
 	5550 4150 5550 4300
 Connection ~ 5550 4300
+$Comp
+L Interface_CAN_LIN:MCP2515-xSO U202
+U 1 1 5BE69763
+P 4300 3700
+F 0 "U202" H 3850 4450 50  0000 C CNN
+F 1 "MCP2515-xSO" H 4650 2950 50  0000 C CNN
+F 2 "Package_SO:SOIC-18W_7.5x11.6mm_P1.27mm" H 4300 2800 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21801e.pdf" H 4400 2900 50  0001 C CNN
+	1    4300 3700
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
