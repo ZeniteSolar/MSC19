@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L basicsensormodule-rescue:Crystal_Small-Device Y401
+L Device:Crystal_Small Y401
 U 1 1 59FE3A5A
 P 8300 3600
 F 0 "Y401" H 8300 3700 50  0000 C CNN
@@ -26,7 +26,7 @@ F 3 "http://www.farnell.com/datasheets/321153.pdf" H 8300 3600 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L basicsensormodule-rescue:C_Small-Device C403
+L Device:C_Small C403
 U 1 1 59FE3A61
 P 8050 3800
 F 0 "C403" H 8060 3870 50  0000 L CNN
@@ -37,7 +37,7 @@ F 3 "" H 8050 3800 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:C_Small-Device C404
+L Device:C_Small C404
 U 1 1 59FE3A68
 P 8550 3800
 F 0 "C404" H 8350 3900 50  0000 L CNN
@@ -48,7 +48,7 @@ F 3 "" H 8550 3800 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:R_Small-Device R401
+L Device:R_Small R401
 U 1 1 59FE4B17
 P 6000 4050
 F 0 "R401" H 6030 4070 50  0000 L CNN
@@ -59,7 +59,7 @@ F 3 "" H 6000 4050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:C_Small-Device C406
+L Device:C_Small C406
 U 1 1 59FE4EE2
 P 6000 4450
 F 0 "C406" V 5900 4350 50  0000 L CNN
@@ -70,7 +70,7 @@ F 3 "" H 6000 4450 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L basicsensormodule-rescue:LED_Small_ALT-Device D402
+L Device:LED_Small D402
 U 1 1 59FE5354
 P 5900 5500
 F 0 "D402" H 5850 5625 50  0000 L CNN
@@ -99,7 +99,7 @@ VCC
 Text HLabel 7950 2350 0    60   Output ~ 0
 GND
 $Comp
-L basicsensormodule-rescue:R_Small-Device R404
+L Device:R_Small R404
 U 1 1 59FFC489
 P 5900 5200
 F 0 "R404" H 5930 5220 50  0000 L CNN
@@ -110,7 +110,7 @@ F 3 "" H 5900 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:ATmega328P-PU-MCU_Microchip_ATmega U401
+L MCU_Microchip_ATmega:ATmega328P-PU U401
 U 1 1 59FE3414
 P 4350 3950
 F 0 "U401" H 3850 5400 50  0000 L BNN
@@ -121,7 +121,7 @@ F 3 "" H 4350 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:R_Small-Device R402
+L Device:R_Small R402
 U 1 1 5AACAE36
 P 7350 4350
 F 0 "R402" V 7400 4450 50  0000 L CNN
@@ -132,7 +132,7 @@ F 3 "" H 7350 4350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L basicsensormodule-rescue:R_Small-Device R403
+L Device:R_Small R403
 U 1 1 5AACB0BA
 P 7350 4450
 F 0 "R403" V 7400 4550 50  0000 L CNN
@@ -231,7 +231,7 @@ Wire Wire Line
 Wire Wire Line
 	4350 5650 5900 5650
 $Comp
-L basicsensormodule-rescue:LED_Small_ALT-Device D403
+L Device:LED_Small D403
 U 1 1 5BE7DD75
 P 6200 5500
 F 0 "D403" H 6150 5625 50  0000 L CNN
@@ -242,7 +242,7 @@ F 3 "" V 6200 5500 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L basicsensormodule-rescue:R_Small-Device R405
+L Device:R_Small R405
 U 1 1 5BE7DD7B
 P 6200 5200
 F 0 "R405" H 6230 5220 50  0000 L CNN
@@ -271,7 +271,7 @@ Wire Wire Line
 Wire Wire Line
 	4450 2450 4450 2350
 $Comp
-L basicsensormodule-rescue:LL4148-Diode D401
+L Diode:LL4148 D401
 U 1 1 5BE95CC8
 P 5750 4050
 F 0 "D401" V 5650 4200 50  0000 R CNN
@@ -295,7 +295,7 @@ Wire Wire Line
 Wire Wire Line
 	8050 4000 8300 4000
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0407
+L power:GND #PWR0407
 U 1 1 5BEB6AE8
 P 8300 4100
 F 0 "#PWR0407" H 8300 3850 50  0001 C CNN
@@ -311,7 +311,7 @@ Connection ~ 8300 4000
 Wire Wire Line
 	8300 4000 8550 4000
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0412
+L power:GND #PWR0412
 U 1 1 5BEB7AB4
 P 4350 5750
 F 0 "#PWR0412" H 4350 5500 50  0001 C CNN
@@ -339,7 +339,7 @@ Wire Wire Line
 	4950 5150 5050 5150
 NoConn ~ 5050 5150
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0404
+L power:GND #PWR0404
 U 1 1 5BEC895B
 P 8050 2450
 F 0 "#PWR0404" H 8050 2200 50  0001 C CNN
@@ -354,7 +354,7 @@ Wire Wire Line
 Wire Wire Line
 	8050 2350 8050 2450
 $Comp
-L basicsensormodule-rescue:Conn_01x04-Connector_Generic J401
+L Connector_Generic:Conn_01x04 J401
 U 1 1 5BECD3FE
 P 7750 4450
 F 0 "J401" H 7700 4000 50  0000 C CNN
@@ -367,7 +367,7 @@ $EndComp
 Wire Wire Line
 	6000 4250 6000 4350
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0408
+L power:GND #PWR0408
 U 1 1 5BECF494
 P 6000 4650
 F 0 "#PWR0408" H 6000 4400 50  0001 C CNN
@@ -383,7 +383,7 @@ Wire Wire Line
 	5750 3750 5750 3850
 Connection ~ 5750 3850
 $Comp
-L basicsensormodule-rescue:C_Small-Device C405
+L Device:C_Small C405
 U 1 1 5BED8033
 P 6300 4250
 F 0 "C405" V 6200 4100 50  0000 L CNN
@@ -400,7 +400,7 @@ USART_RX
 Wire Wire Line
 	6400 4250 7550 4250
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0409
+L power:GND #PWR0409
 U 1 1 5BEE0905
 P 7450 4650
 F 0 "#PWR0409" H 7450 4400 50  0001 C CNN
@@ -425,7 +425,7 @@ Wire Wire Line
 Text Label 6600 4450 0    60   ~ 0
 USART_TX
 $Comp
-L basicsensormodule-rescue:+5V-power #PWR0401
+L power:+5V #PWR0401
 U 1 1 5BF321D4
 P 4350 1750
 F 0 "#PWR0401" H 4350 1600 50  0001 C CNN
@@ -436,7 +436,7 @@ F 3 "" H 4350 1750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:+5V-power #PWR0402
+L power:+5V #PWR0402
 U 1 1 5BF32222
 P 8050 2150
 F 0 "#PWR0402" H 8050 2000 50  0001 C CNN
@@ -447,7 +447,7 @@ F 3 "" H 8050 2150 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:+5V-power #PWR0406
+L power:+5V #PWR0406
 U 1 1 5BF330B7
 P 5750 3750
 F 0 "#PWR0406" H 5750 3600 50  0001 C CNN
@@ -464,7 +464,7 @@ Wire Wire Line
 Wire Wire Line
 	3650 2750 3750 2750
 $Comp
-L basicsensormodule-rescue:C_Small-Device C402
+L Device:C_Small C402
 U 1 1 5BF3B4C1
 P 3650 2950
 F 0 "C402" H 3700 2850 50  0000 L CNN
@@ -478,7 +478,7 @@ Connection ~ 3650 2750
 Wire Wire Line
 	3650 2750 3650 2850
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0405
+L power:GND #PWR0405
 U 1 1 5BF3D2B5
 P 3650 3150
 F 0 "#PWR0405" H 3650 2900 50  0001 C CNN
@@ -498,7 +498,7 @@ MCP_INT
 Text Label 5300 2750 0    60   ~ 0
 MCP_SS
 $Comp
-L basicsensormodule-rescue:C_Small-Device C401
+L Device:C_Small C401
 U 1 1 5BF2780D
 P 4550 2050
 F 0 "C401" H 4650 2050 50  0000 L CNN
@@ -518,7 +518,7 @@ Wire Wire Line
 	4350 1850 4350 2350
 Connection ~ 4350 1850
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0403
+L power:GND #PWR0403
 U 1 1 5BF3B38D
 P 4550 2250
 F 0 "#PWR0403" H 4550 2000 50  0001 C CNN

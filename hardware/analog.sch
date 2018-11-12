@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L basicsensormodule-rescue:R_Small-Device R303
+L Device:R_Small R303
 U 1 1 5AAAFE5C
 P 4250 3550
 AR Path="/5AAAFE5C" Ref="R303"  Part="1" 
@@ -28,7 +28,7 @@ F 3 "" H 4250 3550 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L basicsensormodule-rescue:R_Small-Device R308
+L Device:R_Small R308
 U 1 1 5AAB0092
 P 4250 3750
 AR Path="/5AAB0092" Ref="R308"  Part="1" 
@@ -62,7 +62,7 @@ Wire Wire Line
 Wire Wire Line
 	5350 4100 5350 4000
 $Comp
-L basicsensormodule-rescue:R_Small-Device R306
+L Device:R_Small R306
 U 1 1 5AAB2C10
 P 6000 3650
 AR Path="/5AAB2C10" Ref="R306"  Part="1" 
@@ -75,7 +75,7 @@ F 3 "" H 6000 3650 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L basicsensormodule-rescue:R_Small-Device R307
+L Device:R_Small R307
 U 1 1 5AAB2D9F
 P 6400 3650
 AR Path="/5AAB2D9F" Ref="R307"  Part="1" 
@@ -88,7 +88,7 @@ F 3 "" H 6400 3650 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L basicsensormodule-rescue:C_Small-Device C303
+L Device:C_Small C303
 U 1 1 5AAB2FEC
 P 6600 3900
 AR Path="/5AAB2FEC" Ref="C303"  Part="1" 
@@ -109,7 +109,7 @@ Wire Wire Line
 	6100 3650 6200 3650
 Connection ~ 6200 3650
 $Comp
-L basicsensormodule-rescue:C_Small-Device C302
+L Device:C_Small C302
 U 1 1 5AAB31B3
 P 6200 3900
 AR Path="/5AAB31B3" Ref="C302"  Part="1" 
@@ -127,7 +127,7 @@ Wire Wire Line
 	7350 3550 7450 3550
 Connection ~ 7450 3550
 $Comp
-L basicsensormodule-rescue:TestPoint-Connector TP302
+L Connector:TestPoint TP302
 U 1 1 5AAB3DBB
 P 5350 3250
 AR Path="/5AAB3DBB" Ref="TP302"  Part="1" 
@@ -140,7 +140,7 @@ F 3 "" H 5350 3250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:R_Small-Device R301
+L Device:R_Small R301
 U 1 1 5AAB421B
 P 4950 3300
 AR Path="/5AAB421B" Ref="R301"  Part="1" 
@@ -157,7 +157,7 @@ Wire Wire Line
 Wire Wire Line
 	4850 3300 4550 3300
 $Comp
-L basicsensormodule-rescue:R_Small-Device R309
+L Device:R_Small R309
 U 1 1 5AAB4362
 P 4950 4000
 AR Path="/5AAB4362" Ref="R309"  Part="1" 
@@ -172,7 +172,7 @@ $EndComp
 Wire Wire Line
 	5350 4000 5050 4000
 $Comp
-L basicsensormodule-rescue:TestPoint-Connector TP301
+L Connector:TestPoint TP301
 U 1 1 5AAB45B1
 P 4550 3250
 AR Path="/5AAB45B1" Ref="TP301"  Part="1" 
@@ -185,7 +185,7 @@ F 3 "" H 4550 3250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:TestPoint-Connector TP307
+L Connector:TestPoint TP307
 U 1 1 5AAB4639
 P 4550 4050
 AR Path="/5AAB4639" Ref="TP307"  Part="1" 
@@ -201,7 +201,7 @@ Connection ~ 4550 3300
 Connection ~ 4550 4000
 Connection ~ 5350 3300
 $Comp
-L basicsensormodule-rescue:R_Small-Device R304
+L Device:R_Small R304
 U 1 1 5AAB5EF4
 P 3750 3650
 AR Path="/5AAB5EF4" Ref="R304"  Part="1" 
@@ -216,7 +216,7 @@ $EndComp
 Connection ~ 3750 3550
 Connection ~ 3750 3750
 $Comp
-L basicsensormodule-rescue:TestPoint-Connector TP304
+L Connector:TestPoint TP304
 U 1 1 5AAB63B7
 P 7850 3500
 AR Path="/5AAB63B7" Ref="TP304"  Part="1" 
@@ -229,7 +229,7 @@ F 3 "" H 7850 3500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:TestPoint-Connector TP305
+L Connector:TestPoint TP305
 U 1 1 5AAB6737
 P 6600 3600
 AR Path="/5AAB6737" Ref="TP305"  Part="1" 
@@ -244,7 +244,7 @@ $EndComp
 Wire Wire Line
 	6200 3800 6200 3650
 $Comp
-L basicsensormodule-rescue:TestPoint-Connector TP303
+L Connector:TestPoint TP303
 U 1 1 5AAB73FF
 P 3750 3450
 AR Path="/5AAB73FF" Ref="TP303"  Part="1" 
@@ -257,7 +257,7 @@ F 3 "" H 3750 3450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:TestPoint-Connector TP306
+L Connector:TestPoint TP306
 U 1 1 5AAB7477
 P 3750 3850
 AR Path="/5AAB7477" Ref="TP306"  Part="1" 
@@ -276,7 +276,7 @@ Wire Wire Line
 Text HLabel 8000 3550 2    60   Input ~ 0
 out1
 $Comp
-L basicsensormodule-rescue:D_Zener_Small-Device D301
+L Device:D_Zener_Small D301
 U 1 1 5AABF910
 P 7850 3850
 AR Path="/5AABF910" Ref="D301"  Part="1" 
@@ -298,7 +298,7 @@ Text HLabel 8800 2900 0    60   Input ~ 0
 Text HLabel 8800 3050 0    60   Input ~ 0
 GND
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0302
+L power:GND #PWR0302
 U 1 1 5AAC31B3
 P 9150 3100
 AR Path="/5AAC31B3" Ref="#PWR0302"  Part="1" 
@@ -311,7 +311,7 @@ F 3 "" H 9150 3100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:+5V-power #PWR0301
+L power:+5V #PWR0301
 U 1 1 5AAC3254
 P 9150 2850
 AR Path="/5AAC3254" Ref="#PWR0301"  Part="1" 
@@ -370,7 +370,7 @@ Wire Wire Line
 Wire Wire Line
 	7850 3550 8000 3550
 $Comp
-L basicsensormodule-rescue:R_Small-Device R305
+L Device:R_Small R305
 U 1 1 5BE62E23
 P 5600 3650
 AR Path="/5BE62E23" Ref="R305"  Part="1" 
@@ -386,7 +386,7 @@ Wire Wire Line
 	5700 3650 5800 3650
 Connection ~ 5800 3650
 $Comp
-L basicsensormodule-rescue:C_Small-Device C301
+L Device:C_Small C301
 U 1 1 5BE62E2C
 P 5800 3900
 AR Path="/5BE62E2C" Ref="C301"  Part="1" 
@@ -413,7 +413,7 @@ Wire Wire Line
 Wire Wire Line
 	3300 3550 3750 3550
 $Comp
-L basicsensormodule-rescue:LM324-Amplifier_Operational U301
+L Amplifier_Operational:LM324 U301
 U 3 1 5BE784E0
 P 4950 3650
 AR Path="/5BE784E0" Ref="U301"  Part="3" 
@@ -426,7 +426,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 5000 3850 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L basicsensormodule-rescue:LM324-Amplifier_Operational U301
+L Amplifier_Operational:LM324 U301
 U 2 1 5BE7C0AB
 P 7050 3550
 AR Path="/5BE7C0AB" Ref="U301"  Part="2" 
@@ -439,7 +439,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 7100 3750 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L basicsensormodule-rescue:LM324-Amplifier_Operational U301
+L Amplifier_Operational:LM324 U301
 U 5 1 5BE7C131
 P 8750 4050
 AR Path="/5BE7C131" Ref="U301"  Part="5" 
@@ -452,7 +452,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm2902-n.pdf" H 8800 4250 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:C_Small-Device C304
+L Device:C_Small C304
 U 1 1 5BE7C4D7
 P 8700 4050
 AR Path="/5BE7C4D7" Ref="C304"  Part="1" 
@@ -465,7 +465,7 @@ F 3 "" H 8700 4050 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0308
+L power:GND #PWR0308
 U 1 1 5BE81413
 P 8850 4450
 AR Path="/5BE81413" Ref="#PWR0308"  Part="1" 
@@ -491,7 +491,7 @@ Wire Wire Line
 Wire Wire Line
 	8700 3700 8700 3950
 $Comp
-L basicsensormodule-rescue:+5V-power #PWR0303
+L power:+5V #PWR0303
 U 1 1 5BE86FFF
 P 8850 3650
 AR Path="/5BE86FFF" Ref="#PWR0303"  Part="1" 
@@ -517,7 +517,7 @@ Text Notes 2900 3300 0    50   ~ 0
 Text Notes 3900 3900 1    50   ~ 0
 30R for current
 $Comp
-L basicsensormodule-rescue:R_Small-Device R302
+L Device:R_Small R302
 U 1 1 5BE77B14
 P 3200 3550
 AR Path="/5BE77B14" Ref="R302"  Part="1" 
@@ -530,7 +530,7 @@ F 3 "" H 3200 3550 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0307
+L power:GND #PWR0307
 U 1 1 5BE6E97E
 P 7850 4100
 AR Path="/5BE6E97E" Ref="#PWR0307"  Part="1" 
@@ -543,7 +543,7 @@ F 3 "" H 7850 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0305
+L power:GND #PWR0305
 U 1 1 5BE6E9BF
 P 6600 4050
 AR Path="/5BE6E9BF" Ref="#PWR0305"  Part="1" 
@@ -556,7 +556,7 @@ F 3 "" H 6600 4050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0304
+L power:GND #PWR0304
 U 1 1 5BE6EA00
 P 5800 4050
 AR Path="/5BE6EA00" Ref="#PWR0304"  Part="1" 
@@ -569,7 +569,7 @@ F 3 "" H 5800 4050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L basicsensormodule-rescue:GND-power #PWR0306
+L power:GND #PWR0306
 U 1 1 5BE6EA41
 P 5350 4100
 AR Path="/5BE6EA41" Ref="#PWR0306"  Part="1" 
