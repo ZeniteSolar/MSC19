@@ -136,7 +136,7 @@ U 1 1 5AAC0839
 P 8200 3900
 F 0 "D201" H 8200 4075 50  0000 C CNN
 F 1 "pesd1can" H 8200 4000 50  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 8050 3900 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23_Handsoldering" H 8050 3900 50  0001 C CNN
 F 3 "https://assets.nexperia.com/documents/data-sheet/PESD1CAN.pdf" H 8050 3900 50  0001 C CNN
 	1    8200 3900
 	1    0    0    -1  

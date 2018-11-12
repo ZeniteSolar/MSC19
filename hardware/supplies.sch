@@ -19,7 +19,7 @@ U 1 1 5A007B62
 P 5900 3950
 F 0 "U501" H 5750 4075 50  0000 C CNN
 F 1 "LM7805" H 5900 4100 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown" H 5900 4175 50  0001 C CIN
+F 2 "KicadZeniteSolarLibrary18:TO-220-3_Horizontal_TabDown_SMD" H 5900 4175 50  0001 C CIN
 F 3 "https://www.sparkfun.com/datasheets/Components/LM7805.pdf" H 5900 3900 50  0001 C CNN
 	1    5900 3950
 	1    0    0    -1  
@@ -34,7 +34,7 @@ U 1 1 5A008895
 P 4900 4400
 F 0 "C501" H 4910 4470 50  0000 L CNN
 F 1 "1uF" H 4910 4320 50  0000 L CNN
-F 2 "Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R_Pad1.30x1.05mm_HandSolder" H 4900 4400 50  0001 C CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-6032-20_AVX-F_Pad2.25x2.35mm_HandSolder" H 4900 4400 50  0001 C CNN
 F 3 "" H 4900 4400 50  0001 C CNN
 	1    4900 4400
 	1    0    0    -1  
@@ -80,7 +80,7 @@ U 1 1 5AAD0D5C
 P 6850 4400
 F 0 "C504" H 6860 4470 50  0000 L CNN
 F 1 "1uF" H 6860 4320 50  0000 L CNN
-F 2 "Capacitor_Tantalum_SMD:CP_EIA-2012-12_Kemet-R_Pad1.30x1.05mm_HandSolder" H 6850 4400 50  0001 C CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-6032-20_AVX-F_Pad2.25x2.35mm_HandSolder" H 6850 4400 50  0001 C CNN
 F 3 "" H 6850 4400 50  0001 C CNN
 	1    6850 4400
 	1    0    0    -1  
