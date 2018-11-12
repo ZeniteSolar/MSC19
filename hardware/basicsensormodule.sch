@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:basicsensormodule-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -129,7 +128,7 @@ U 1 1 5BE60AE4
 P 1850 4000
 F 0 "J102" H 2000 3900 50  0000 C TNN
 F 1 "SENSOR" H 2100 4000 50  0000 C TNN
-F 2 "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-4-2.54_1x04_P2.54mm_Horizontal" H 1850 3775 50  0001 C CNN
+F 2 "TerminalBlock:TerminalBlock_bornier-4_P5.08mm" H 1850 3775 50  0001 C CNN
 F 3 "" H 1825 4000 50  0001 C CNN
 	1    1850 4000
 	-1   0    0    1   
