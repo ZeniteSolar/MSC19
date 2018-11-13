@@ -27,10 +27,10 @@
 #define ADC_TIMER_TOP           ((F_CPU/(2*ADC_TIMER_PRESCALER))/(ADC_TIMER_FREQUENCY) -1)
 
 typedef enum adc_channels{ 
-    ADC0, ADC1 ,ADC2, ADC3, ADC4, ADC5  
+    ADC0, ADC1 ,ADC2, ADC3, ADC4, ADC5
 } adc_channels_t;                           //*< the adc_channel type 
 
-#define ADC_LAST_CHANNEL ADC2
+#define ADC_LAST_CHANNEL ADC0
 
 typedef struct{
     uint32_t sum;

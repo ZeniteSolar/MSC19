@@ -105,18 +105,12 @@ ISR(ADC_vect)
         
         if(++adc.samples >= ADC_AVG_SIZE_10){
             adc.channel[0].avg = adc.channel[0].sum >> ADC_AVG_SIZE_2;
-            adc.channel[1].avg = adc.channel[1].sum >> ADC_AVG_SIZE_2;
-            adc.channel[2].avg = adc.channel[2].sum >> ADC_AVG_SIZE_2;
 
-            adc.samples = adc.channel[0].sum = adc.channel[1].sum = adc.channel[2].sum = 0;
+            adc.samples = adc.channel[0].sum = 0;
             adc.ready = 1;
             
             VERBOSE_MSG_ADC( usart_send_string("adc:") );
             VERBOSE_MSG_ADC( usart_send_uint16(adc.channel[0].avg) );
-            VERBOSE_MSG_ADC( usart_send_char(',') );
-            VERBOSE_MSG_ADC( usart_send_uint16(adc.channel[1].avg) );
-            VERBOSE_MSG_ADC( usart_send_char(',') );
-            VERBOSE_MSG_ADC( usart_send_uint16(adc.channel[2].avg) );
             VERBOSE_MSG_ADC( usart_send_char('\n') );
         }
     }
