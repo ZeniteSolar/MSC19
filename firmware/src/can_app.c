@@ -69,10 +69,7 @@ inline void can_app_send_mppt(void)
     msg.length                              = CAN_LENGTH_MSG_MCC17_MPPT;
 
     msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MCC17_MPPT_D_BYTE]     = control.D;
-    msg.data[CAN_MSG_MCC17_MPPT_IPANEL_BYTE]  = control.ii[0];
-    msg.data[CAN_MSG_MCC17_MPPT_VPANEL_BYTE]  = control.vi[0];
-    msg.data[CAN_MSG_MCC17_MPPT_VBAT_BYTE]    = control.vo[0];
+    //msg.data[CAN_MSG_MCC17_MPPT_VBAT_BYTE]    = control.vo[0];
 
     can_send_message(&msg); 
 }
@@ -93,8 +90,6 @@ inline void can_app_extractor_mic17_state(can_t *msg)
         /*if(contador == maximo)*/{
             //ERROR!!!
         }
-
-         
     }
 }
  
@@ -117,16 +112,9 @@ inline void can_app_extractor_mic17_mppt(can_t *msg)
 #ifdef CAN_DEPENDENT
         can_app_checks_without_mic17_msg = 0;
 #endif
-#ifdef MPPT_ON_DEPENDET
-        system_flags.enable = system_flags.mppt_on = bit_is_set(msg->data[
-            CAN_MSG_MIC17_MPPTS_MPPTS_ON_BYTE], 
-            CAN_MSG_MIC17_MPPTS_MPPTS_ON_BIT);
-#else
-        system_flags.enable = system_flags.mppt_on = 1;
-#endif
 
-        control.pi_limit      = msg->data[
-            CAN_MSG_MIC17_MPPTS_POT_BYTE];
+        //control.pi_limit      = msg->data[
+        //    CAN_MSG_MIC17_MPPTS_POT_BYTE];
 
     }
 }

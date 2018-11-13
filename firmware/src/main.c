@@ -21,14 +21,6 @@ void init(void)
         VERBOSE_MSG_INIT(usart_send_string("WATCHDOG... OFF!\n"));
     #endif
 
-    #ifdef PWM_ON
-        VERBOSE_MSG_INIT(usart_send_string("PWM..."));
-        pwm_init();
-        VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
-    #else
-        VERBOSE_MSG_INIT(usart_send_string("PWM... OFF!\n"));
-    #endif
-
     #ifdef WATCHDOG_ON
         wdt_reset();
     #endif
@@ -164,7 +156,6 @@ int main(void)
 ISR(BADISR_vect)
 {
     for(;;){
-        pwm_reset();
         VERBOSE_MSG_ERROR(usart_send_string("\nFATAL ERROR: BAD ISR."));
         #ifdef WATCHDOG_ON
             VERBOSE_MSG_ERROR(usart_send_string("WAITING FOR WATCHDOG TO RESET...\n"));

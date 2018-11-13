@@ -51,13 +51,6 @@
 #pragma message "MACHINE: OFF!"
 #endif /*ifdef MACHINE_ON*/
 
-#ifdef PWM_ON
-#include "pwm.h"
-#pragma message "PWM: ON!"
-#else
-#pragma message "PWM: OFF!"
-#endif /*ifdef PWM_ON*/
-
 #ifdef LED_ON
 #pragma message "LED: ON!"
 #else
