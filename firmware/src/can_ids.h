@@ -30,8 +30,12 @@
 #define CAN_SIGNATURE_MCC17_4           224
 #define CAN_SIGNATURE_MAB17             230
 #define CAN_SIGNATURE_MIC17             240
+#define CAN_SIGNATURE_MSC19_1           251
+#define CAN_SIGNATURE_MSC19_2           252
+#define CAN_SIGNATURE_MSC19_3           253
+#define CAN_SIGNATURE_MSC19_4           254
 
-#define CAN_SIGNATURE_SELF              CAN_SIGNATURE_MCC17_4
+#define CAN_SIGNATURE_SELF              CAN_SIGNATURE_MSC19_1
 
 //------------------------------------------------------------------------------
 
@@ -41,7 +45,8 @@
 #define CAN_MASK_MAB17                  0b11111111111   //<! Mask for MAB17
 #define CAN_MASK_MCS17                  0b11111111111   //<! Mask for MCS17
 #define CAN_MASK_MAD17                  0b11111111111   //<! Mask for MAD17
-#define CAN_MASK_MCC17                  0b11111111111   //<! Mask for MAD17
+#define CAN_MASK_MCC17                  0b11111111111   //<! Mask for MCC17
+#define CAN_MASK_MSC19                  0b11111111111   //<! Mask for MSC19
 
 //------------------------------------------------------------------------------
 
@@ -136,5 +141,20 @@
  
 //------------------------------------------------------------------------------
 
+// FILTERS FOR MESSAGES FROM MSC19:
+#define CAN_FILTER_MSG_MSC19_STATE      0b00000100000   //<! Informs about state and errors
+#define CAN_FILTER_MSG_MSC19_ADC        0b00000100001   //<! Informs about adc
+
+// MSC19 ADC:
+#define CAN_LENGTH_MSG_MSC19_ADC        6
+#define CAN_MSG_MSC19_ADC_AVG_BYTE_L    0
+#define CAN_MSG_MSC19_ADC_AVG_BYTE_H    1
+#define CAN_MSG_MSC19_ADC_MIN_BYTE_L    2
+#define CAN_MSG_MSC19_ADC_MIN_BYTE_H    3
+#define CAN_MSG_MSC19_ADC_MAX_BYTE_L    4
+#define CAN_MSG_MSC19_ADC_MAX_BYTE_H    5
+ 
+//------------------------------------------------------------------------------
+ 
 
 #endif /* ifndef CAN_IDS_H */
