@@ -23,7 +23,7 @@
 // Note the resolution. For example.. at 150hz, ICR1 = PWM_TOP = 159, so it
 //#define QUOTIENT  (((uint32_t)MACHINE_TIMER_PRESCALER)*((uint32_t)MACHINE_TIMER_FREQUENCY))
 //#define ADC_TIMER_TOP (0.5*(F_CPU)/QUOTIENT)
-#define ADC_TIMER_FREQUENCY     ((uint32_t)(ADC_FREQUENCY)*(uint8_t)(ADC_LAST_CHANNEL))
+#define ADC_TIMER_FREQUENCY     ((uint32_t)(ADC_FREQUENCY)*(uint8_t)(ADC_LAST_CHANNEL +1))
 #define ADC_TIMER_TOP           ((F_CPU/(2*ADC_TIMER_PRESCALER))/(ADC_TIMER_FREQUENCY) -1)
 
 typedef enum adc_channels{ 
