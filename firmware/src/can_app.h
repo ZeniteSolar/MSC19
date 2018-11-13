@@ -21,18 +21,15 @@
 void can_app_print_msg(can_t *msg);
 void can_app_task(void);
 void can_app_send_state(void);
-void can_app_send_mppt(void);
+void can_app_send_adc(void);
 void can_app_extractor_mic17_state(can_t *msg);
-void can_app_extractor_mic17_mppt(can_t *msg);
-void can_app_msg_extractors_switch(can_t *msg);
+void can_app_extractor_mic17_msc(can_t *msg);
 void check_can(void);
 
-#define CAN_APP_SEND_STATE_CLK_DIV  100
-#define CAN_APP_SEND_MPPT_CLK_DIV  50
+#define CAN_APP_SEND_STATE_CLK_DIV  CAN_APP_SEND_STATE_FREQ
+#define CAN_APP_SEND_ADC_CLK_DIV    CAN_APP_SEND_ADC_FREQ
 
 uint8_t can_app_send_state_clk_div;
-uint8_t can_app_send_mppt_clk_div;
-uint16_t can_app_checks_without_mic17_msg;
-#define CAN_APP_CHECKS_WITHOUT_MIC17_MSG 750
+uint8_t can_app_send_adc_clk_div;
 
 #endif /* ifndef CAN_APP_H */

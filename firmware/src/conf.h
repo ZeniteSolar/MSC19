@@ -88,6 +88,10 @@
 #endif // MACHINE_ON
 
 #ifdef CAN_ON
+
+#define CAN_APP_SEND_STATE_FREQ     1       //<! state msg frequency in Hz
+#define CAN_APP_SEND_ADC_FREQ       10      //<! adc msg frequency in Hz
+
 // CANBUS DEFINITONS
 // ----------------------------------------------------------------------------
 /* Global settings for building the can-lib and application program.
