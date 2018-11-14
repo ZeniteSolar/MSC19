@@ -26,8 +26,13 @@ void can_app_extractor_mic17_state(can_t *msg);
 void can_app_extractor_mic17_msc(can_t *msg);
 void check_can(void);
 
+#ifdef CAN_ON
 #define CAN_APP_SEND_STATE_CLK_DIV  CAN_APP_SEND_STATE_FREQ
 #define CAN_APP_SEND_ADC_CLK_DIV    CAN_APP_SEND_ADC_FREQ
+#else
+#define CAN_APP_SEND_STATE_CLK_DIV  1
+#define CAN_APP_SEND_ADC_CLK_DIV    1
+#endif
 
 uint8_t can_app_send_state_clk_div;
 uint8_t can_app_send_adc_clk_div;

@@ -47,59 +47,8 @@ void machine_init(void)
  */
 inline void set_machine_initial_state(void)
 {
-    //system_flags.enable = 0;
     error_flags.all = 0;
     machine_clk = machine_clk_divider = led_clk_div = 0;
-}
-
-/**
-* @brief read and checks current levels
-*/
-inline void read_and_check_adcs(void)
-{ 
-#ifdef ADC_ON
-    //calc_avg();
-    /*
-    uint64_t tmp;
-    tmp = (uint64_t)(uint16_t)AVG_PANEL_VOLTAGE * (uint32_t)ADC_PANEL_VOLTAGE_ANGULAR_COEF ;
-    control.vi[0] = tmp >> 10;
-//        +ADC_PANEL_VOLTAGE_LINEAR_COEF;
-    tmp = (uint64_t)(uint16_t)AVG_PANEL_CURRENT * (uint32_t)ADC_PANEL_CURRENT_ANGULAR_COEF ; 
-    control.ii[0] = tmp >> 10;
-//        +ADC_PANEL_CURRENT_LINEAR_COEF;
-    tmp = (uint64_t)(uint16_t)AVG_BATTERY_VOLTAGE * (uint32_t)ADC_BATTERY_VOLTAGE_ANGULAR_COEF ; 
-    control.vo[0] = tmp >> 10;
-//        +ADC_BATTERY_VOLTAGE_LINEAR_COEF;
-    */
-    switch(state_machine){
-        default:
-        case STATE_INITIALIZING:
-#ifdef CHECK_INITIALIZING_CONDITIONS
-            check_initializing_panel_voltage();
-            check_initializing_panel_current();
-            check_initializing_battery_voltage();
-#endif // CHECK_INITIALIZING_CONDITIONS
-
-            break;
-        case STATE_IDLE:
-#ifdef CHECK_IDLE_CONDITIONS
-            check_idle_panel_voltage();
-            check_idle_panel_current();
-            check_idle_battery_voltage();
-#endif //CHECK_IDLE_CONDITIONS
-
-            break;
-        case STATE_RUNNING:
-#ifdef CHECK_RUNNING_CONDITIONS
-            check_running_panel_voltage();
-            check_running_panel_current();
-            check_running_battery_voltage();
-#endif // CHECK_RUNNING_CONDITIONS
-
-            break;
-    } 
-#endif
- 
 }
 
 /**
@@ -223,20 +172,6 @@ inline void task_running(void)
         led_clk_div = 0;
     }
 #endif // LED_ON
-
-    /*
-    if(system_flags.mppt_on && system_flags.enable){
-#ifdef PWM_ON
-
-    pwm_compute();
-
-#endif //PWM_ON
-
-    }else{
-        set_state_idle();
-    }
-
-    */
 }
 
 
@@ -316,6 +251,15 @@ void print_infos(void)
     }
 }
 
+inline void reset_measurements(void)
+{
+    measurements.adc0_avg = 0;
+    measurements.adc0_avg_sum_count = 0;
+    measurements.adc0_avg_sum = 0;
+    measurements.adc0_max = 0;
+    measurements.adc0_min = 0;
+}
+
 /**
  * @brief this is the machine state itself.
  */
@@ -333,7 +277,15 @@ inline void machine_run(void)
         if(adc.ready){
             adc.ready = 0;
 
-            read_and_check_adcs();
+            measurements.adc0_avg = ADC0_AVG;
+            
+            if(measurements.adc0_avg < measurements.adc0_min) 
+                measurements.adc0_min = measurements.adc0_avg;
+            if(measurements.adc0_avg > measurements.adc0_max) 
+                measurements.adc0_max = measurements.adc0_avg;
+
+            measurements.adc0_avg_sum_count++;
+            measurements.adc0_avg_sum += measurements.adc0_avg;
 
             if(error_flags.all){
                 print_system_flags();

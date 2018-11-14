@@ -55,26 +55,18 @@ typedef union error_flags{
     uint8_t   all;
 }error_flags_t;
 
-typedef struct control{
-    uint16_t    vi[2];          // value of panel voltage in VOLTS
-	int16_t	    dvi;		    // value of delta panel voltage in VOLTS
-#ifdef ADC_8BITS
-	uint16_t	pi[2];			// value of power in WATTS
-	uint16_t	po[2];			// value of power in WATTS
-	int16_t	    dpi;			// value of delta power in WATTS
-    uint16_t    mpp_pi;
-#else
-	uint32_t	pi[2];			// value of power in WATTS
-	uint32_t	po[2];			// value of power in WATTS
-	int32_t	    dpi;			// value of delta power in WATTS
-    uint32_t    mpp_pi;
-#endif
-}control_t;
+typedef struct measurements{
+    uint16_t    adc0_avg;       // average value of ADC0
+    uint16_t    adc0_avg_sum_count;
+    uint64_t    adc0_avg_sum;   // average value of ADC0
+    uint16_t    adc0_min;       // period minimum value of ADC0
+    uint16_t    adc0_max;       // period maximum value of ADC0
+}measurements_t;
 
 
 // machine checks
-void read_and_check_adcs(void);
 void check_buffers(void);
+void reset_measurements(void);
 
 // debug functions
 void print_configurations(void);
@@ -102,6 +94,7 @@ void set_state_reset(void);
 volatile state_machine_t state_machine;
 volatile system_flags_t system_flags;
 volatile error_flags_t error_flags;
+volatile measurements_t measurements;
 volatile uint8_t machine_clk;
 volatile uint8_t machine_clk_divider;
 volatile uint8_t total_errors;           // Contagem de ERROS

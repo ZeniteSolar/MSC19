@@ -27,7 +27,7 @@
 
 // MODULES ACTIVATION
 #define USART_ON
-//#define CAN_ON
+#define CAN_ON
 //#define CAN_DEPENDENT
 #define ADC_ON
 #define MACHINE_ON
@@ -41,16 +41,9 @@
 // note that changing ADC_FREQUENCY may cause problems with avg_sum_samples
 #define ADC_FREQUENCY                       10000 // 20000
 #define ADC_TIMER_PRESCALER                 8
-#define AVG_PANEL_VOLTAGE                   adc.channel[ADC0].avg
-#define AVG_PANEL_CURRENT                   adc.channel[ADC1].avg
-#define AVG_BATTERY_VOLTAGE                 adc.channel[ADC2].avg
-#define ADC_NOISE_VALUE                     10
-#define ADC_PANEL_VOLTAGE_ANGULAR_COEF      54937 //49776 //(40000/((4/5)*1024))
-//#define ADC_PANEL_VOLTAGE_LINEAR_COEF       0
-#define ADC_PANEL_CURRENT_ANGULAR_COEF      16337 //16985 //(16000/(((16*200*1500e-6)/5)*1024))
-//#define ADC_PANEL_CURRENT_LINEAR_COEF       0
-#define ADC_BATTERY_VOLTAGE_ANGULAR_COEF    65088 //65991 //~(60000/1024)
-//#define ADC_BATTERY_VOLTAGE_LINEAR_COEF     0
+#define ADC0_AVG                            adc.channel[ADC0].avg
+#define ADC0_ANGULAR_COEF                   54937 //(40000/((4/5)*1024))
+//#define ADC0_LINEAR_COEF                  0
 #define ADC_AVG_SIZE_2                      7                  // in base 2
 #define ADC_AVG_SIZE_10                     128                // in base 10
 

@@ -62,21 +62,27 @@ inline void can_app_send_state(void)
     can_send_message(&msg);
 }
 
-inline void can_app_send_mppt(void)
+inline void can_app_send_adc(void)
 {
     can_t msg;
-    msg.id                                  = CAN_FILTER_MSG_MCC17_MPPT;
-    msg.length                              = CAN_LENGTH_MSG_MCC17_MPPT;
+    msg.id                                  = CAN_FILTER_MSG_MSC19_ADC;
+    msg.length                              = CAN_LENGTH_MSG_MSC19_ADC;
+    //msg...
+    
+    uint16_t avg_adc0 = 
+        measurements.adc0_avg_sum / measurements.adc0_avg_sum_count;
 
     msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_L]  = 0;
-    msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_H]  = 0;
-    msg.data[CAN_MSG_MSC19_ADC_MIN_BYTE_L]  = 0;
-    msg.data[CAN_MSG_MSC19_ADC_MIN_BYTE_H]  = 0;
-    msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_L]  = 0;
-    msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_H]  = 0;
+    msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_L]  = LOW(avg_adc0);
+    msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_H]  = HIGH(avg_adc0);
+    msg.data[CAN_MSG_MSC19_ADC_MIN_BYTE_L]  = LOW(measurements.adc0_min);
+    msg.data[CAN_MSG_MSC19_ADC_MIN_BYTE_H]  = HIGH(measurements.adc0_min);
+    msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_L]  = LOW(measurements.adc0_max);
+    msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_H]  = HIGH(measurements.adc0_max);
 
     can_send_message(&msg); 
+
+    reset_measurements();
 }
 
 /**
