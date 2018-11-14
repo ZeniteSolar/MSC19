@@ -37,4 +37,14 @@
  */ 
 #define tst_bit(y,bit)  (y&(1<<(bit)))
 
+/**
+ * @brief Returns the low byte from a word
+ */
+#define LOW(y)          (y&0xFF)
+
+/**
+ * @brief Returns the high byte from a word
+ */
+#define HIGH(y)         ((y>>8)&0xFF)
+
 #endif /* ifndef _BIT_UTILS_H_*/
