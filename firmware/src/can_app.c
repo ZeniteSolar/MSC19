@@ -54,6 +54,7 @@ inline void can_app_send_state(void)
     can_t msg;
     msg.id                                  = CAN_FILTER_MSG_MAM17_STATE;
     msg.length                              = CAN_LENGTH_MSG_STATE;
+    msg.flags.rtr = 0;
 
     msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
     msg.data[CAN_STATE_MSG_STATE_BYTE]      = (uint8_t) state_machine;
@@ -67,7 +68,7 @@ inline void can_app_send_adc(void)
     can_t msg;
     msg.id                                  = CAN_FILTER_MSG_MSC19_ADC;
     msg.length                              = CAN_LENGTH_MSG_MSC19_ADC;
-    //msg...
+    msg.flags.rtr = 0;
     
     uint16_t avg_adc0 = 
         measurements.adc0_avg_sum / measurements.adc0_avg_sum_count;
