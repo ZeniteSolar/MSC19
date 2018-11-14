@@ -32,6 +32,7 @@ void init(void)
         VERBOSE_MSG_INIT(usart_send_string("CAN filters..."));
         //can_static_filter(can_filter);
         VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
+        set_led(LED2);
     #else
         VERBOSE_MSG_INIT(usart_send_string("CAN... OFF!\n"));
     #endif
@@ -77,7 +78,8 @@ void init(void)
     #endif
 	
     #ifdef LED_ON
-        set_bit(LED_DDR, LED);                      // LED como saída
+        set_bit(LED_DDR, LED1);                      // LED como saída
+        set_bit(LED_DDR, LED2);                      // LED como saída
         VERBOSE_MSG_INIT(usart_send_string("LED... OK!\n"));
     #else
         VERBOSE_MSG_INIT(usart_send_string("LED... OFF!\n"));

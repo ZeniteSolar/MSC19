@@ -137,7 +137,7 @@ inline void print_error_flags(void)
 inline void task_initializing(void)
 {
 #ifdef LED_ON
-    set_led();
+    set_led(LED1);
 #endif
 
     set_machine_initial_state();
@@ -153,7 +153,7 @@ inline void task_idle(void)
 {
 #ifdef LED_ON
     if(led_clk_div++ >= 50){
-        cpl_led();
+        cpl_led(LED1);
         led_clk_div = 0;
     }        
 #endif
@@ -168,7 +168,7 @@ inline void task_running(void)
 {
 #ifdef LED_ON
     if(led_clk_div++ >= 10){
-        cpl_led();
+        cpl_led(LED1);
         led_clk_div = 0;
     }
 #endif // LED_ON
@@ -182,7 +182,7 @@ inline void task_error(void)
 {
 #ifdef LED_ON
     if(led_clk_div++ >= 5){
-        cpl_led();
+        cpl_led(LED1);
         led_clk_div = 0;
     }
 #endif
@@ -211,11 +211,11 @@ inline void task_error(void)
     }
     
 #ifdef LED_ON
-    cpl_led();
+    cpl_led(LED1);
 #endif
     set_state_initializing();
 }
-
+                    
 /**
  * @brief reset error task just freezes the processor and waits for watchdog
  */

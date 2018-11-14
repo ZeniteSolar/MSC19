@@ -31,7 +31,7 @@
 //#define CAN_DEPENDENT
 #define ADC_ON
 #define MACHINE_ON
-//#define LED_ON
+#define LED_ON
 #define WATCHDOG_ON
 //#define SLEEP_ON
 
@@ -68,10 +68,11 @@
 #define     LED_PORT                PORTD
 #define     LED_PIN                 PIND
 #define     LED_DDR                 DDRD
-#define     LED                     PD7
-#define     cpl_led()               cpl_bit(LED_PORT, LED)
-#define     set_led()               set_bit(LED_PORT, LED)
-#define     clr_led()               clr_bit(LED_PORT, LED)
+#define     LED1                    PD5
+#define     LED2                    PD6
+#define     cpl_led(y)              cpl_bit(LED_PORT, y)
+#define     set_led(y)              set_bit(LED_PORT, y)
+#define     clr_led(y)              clr_bit(LED_PORT, y)
 #else
 #define     cpl_led()               
 #define     set_led()               
