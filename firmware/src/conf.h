@@ -18,7 +18,7 @@
 // CONFIGURACOES DE COMPILACAO
 //#define DEBUG_ON
 #define VERBOSE_ON
-#define VERBOSE_ON_CAN_APP
+//#define VERBOSE_ON_CAN_APP
 //#define VERBOSE_ON_MACHINE
 //#define VERBOSE_ON_ADC
 #define VERBOSE_ON_INIT
@@ -42,8 +42,8 @@
 #define ADC_FREQUENCY                       10000 // 20000
 #define ADC_TIMER_PRESCALER                 8
 #define ADC0_AVG                            adc.channel[ADC0].avg
-#define ADC0_ANGULAR_COEF                   54937 //(40000/((4/5)*1024))
-//#define ADC0_LINEAR_COEF                  0
+#define ADC0_ANGULAR_COEF                   10000 //(40000/((4/5)*1024))
+#define ADC0_LINEAR_COEF                    0
 #define ADC_AVG_SIZE_2                      7                  // in base 2
 #define ADC_AVG_SIZE_10                     128                // in base 10
 

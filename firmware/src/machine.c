@@ -277,6 +277,8 @@ inline void machine_run(void)
             adc.ready = 0;
 
             measurements.adc0_avg = ADC0_AVG;
+                //* ADC0_ANGULAR_COEF
+                //+ ADC0_LINEAR_COEF;
             
             if(measurements.adc0_avg < measurements.adc0_min) 
                 measurements.adc0_min = measurements.adc0_avg;
