@@ -127,8 +127,8 @@ inline void print_system_flags(void)
 */
 inline void print_error_flags(void)
 {
-    VERBOSE_MSG_MACHINE(usart_send_string(" errFl: "));
-    VERBOSE_MSG_MACHINE(usart_send_char(48+error_flags.no_canbus));
+    //VERBOSE_MSG_MACHINE(usart_send_string(" errFl: "));
+    //VERBOSE_MSG_MACHINE(usart_send_char(48+error_flags.no_canbus));
 }
  
 /**
@@ -152,11 +152,13 @@ inline void task_initializing(void)
 inline void task_idle(void)
 {
 #ifdef LED_ON
-    if(led_clk_div++ >= 50){
+    if(led_clk_div++ >= 30){
         cpl_led(LED1);
         led_clk_div = 0;
     }        
 #endif
+
+    set_state_running();
 
 }
 
@@ -167,7 +169,7 @@ inline void task_idle(void)
 inline void task_running(void)
 {
 #ifdef LED_ON
-    if(led_clk_div++ >= 10){
+    if(led_clk_div++ >= 50){
         cpl_led(LED1);
         led_clk_div = 0;
     }
@@ -181,8 +183,9 @@ inline void task_running(void)
 inline void task_error(void)
 {
 #ifdef LED_ON
-    if(led_clk_div++ >= 5){
-        cpl_led(LED1);
+    if(led_clk_div++ >= 10){
+        cpl_led(LED2);
+        set_led(LED1);
         led_clk_div = 0;
     }
 #endif
@@ -211,7 +214,7 @@ inline void task_error(void)
     }
     
 #ifdef LED_ON
-    cpl_led(LED1);
+    cpl_led(LED2);
 #endif
     set_state_initializing();
 }
@@ -237,15 +240,15 @@ void print_infos(void)
 
     switch(i++){
         case 0:
-            print_system_flags();
+            //print_system_flags();
             break;
         case 1:
-            print_error_flags();
+            //print_error_flags();
             break;
         case 2:
             //print_control_others(); 
         default:
-            VERBOSE_MSG_MACHINE(usart_send_char('\n'));
+            //VERBOSE_MSG_MACHINE(usart_send_char('\n'));
             i = 0;
             break;
     }
@@ -253,11 +256,10 @@ void print_infos(void)
 
 inline void reset_measurements(void)
 {
-    measurements.adc0_avg = 0;
     measurements.adc0_avg_sum_count = 0;
     measurements.adc0_avg_sum = 0;
     measurements.adc0_max = 0;
-    measurements.adc0_min = 0;
+    measurements.adc0_min = 1023;
 }
 
 /**
@@ -265,11 +267,8 @@ inline void reset_measurements(void)
  */
 inline void machine_run(void)
 {
-	#ifdef CAN_ON
-    can_app_task();
-	#endif /* CAN_ON */
-
-    print_infos();
+    //print_infos();
+    
 
     if(machine_clk){
         machine_clk = 0;
@@ -305,7 +304,10 @@ inline void machine_run(void)
                     break;
                 case STATE_RUNNING:
                     task_running();
-
+                    #ifdef CAN_ON
+                        can_app_task();
+                    #endif /* CAN_ON */   
+                    
                     break;
                 case STATE_ERROR:
                     task_error();

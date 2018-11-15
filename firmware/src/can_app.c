@@ -61,6 +61,9 @@ inline void can_app_send_state(void)
     msg.data[CAN_STATE_MSG_ERROR_BYTE]      = error_flags.all;
 
     can_send_message(&msg);
+#ifdef VERBOSE_MSG_CAN_APP
+    //can_app_print_msg(&msg);
+#endif
 }
 
 inline void can_app_send_adc(void)
@@ -82,6 +85,9 @@ inline void can_app_send_adc(void)
     msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_H]  = HIGH(measurements.adc0_max);
 
     can_send_message(&msg); 
+#ifdef VERBOSE_MSG_CAN_APP
+    can_app_print_msg(&msg);
+#endif
 
     reset_measurements();
 }

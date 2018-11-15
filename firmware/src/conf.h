@@ -17,12 +17,12 @@
 
 // CONFIGURACOES DE COMPILACAO
 //#define DEBUG_ON
-//#define VERBOSE_ON
-//#define VERBOSE_ON_CAN_APP
+#define VERBOSE_ON
+#define VERBOSE_ON_CAN_APP
 //#define VERBOSE_ON_MACHINE
 //#define VERBOSE_ON_ADC
-//#define VERBOSE_ON_INIT
-//#define VERBOSE_ON_ERROR
+#define VERBOSE_ON_INIT
+#define VERBOSE_ON_ERROR
 
 
 // MODULES ACTIVATION
@@ -33,7 +33,7 @@
 #define MACHINE_ON
 #define LED_ON
 #define WATCHDOG_ON
-//#define SLEEP_ON
+#define SLEEP_ON
 
 
 #ifdef ADC_ON
@@ -83,8 +83,8 @@
 
 #ifdef CAN_ON
 
-#define CAN_APP_SEND_STATE_FREQ     1       //<! state msg frequency in Hz
-#define CAN_APP_SEND_ADC_FREQ       10      //<! adc msg frequency in Hz
+#define CAN_APP_SEND_STATE_FREQ     40//36000     //<! state msg frequency in Hz
+#define CAN_APP_SEND_ADC_FREQ       4//6000      //<! adc msg frequency in Hz
 
 // CANBUS DEFINITONS
 // ----------------------------------------------------------------------------
