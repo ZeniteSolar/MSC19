@@ -146,13 +146,13 @@
 #define CAN_FILTER_MSG_MSC19_ADC        0b00000100001   //<! Informs about adc
 
 // MSC19 ADC:
-#define CAN_LENGTH_MSG_MSC19_ADC        6
-#define CAN_MSG_MSC19_ADC_AVG_BYTE_L    0
-#define CAN_MSG_MSC19_ADC_AVG_BYTE_H    1
-#define CAN_MSG_MSC19_ADC_MIN_BYTE_L    2
-#define CAN_MSG_MSC19_ADC_MIN_BYTE_H    3
-#define CAN_MSG_MSC19_ADC_MAX_BYTE_L    4
-#define CAN_MSG_MSC19_ADC_MAX_BYTE_H    5
+#define CAN_LENGTH_MSG_MSC19_ADC        7
+#define CAN_MSG_MSC19_ADC_AVG_BYTE_L    1
+#define CAN_MSG_MSC19_ADC_AVG_BYTE_H    2
+#define CAN_MSG_MSC19_ADC_MIN_BYTE_L    3
+#define CAN_MSG_MSC19_ADC_MIN_BYTE_H    4
+#define CAN_MSG_MSC19_ADC_MAX_BYTE_L    5
+#define CAN_MSG_MSC19_ADC_MAX_BYTE_H    6
  
 //------------------------------------------------------------------------------
  

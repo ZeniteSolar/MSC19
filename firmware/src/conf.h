@@ -17,9 +17,9 @@
 
 // CONFIGURACOES DE COMPILACAO
 //#define DEBUG_ON
-#define VERBOSE_ON
+//#define VERBOSE_ON
 //#define VERBOSE_ON_CAN_APP
-//#define VERBOSE_ON_MACHINE
+#define VERBOSE_ON_MACHINE
 //#define VERBOSE_ON_ADC
 #define VERBOSE_ON_INIT
 #define VERBOSE_ON_ERROR
@@ -54,6 +54,7 @@
 
 #endif //ADC_ON
 
+
 #ifdef MACHINE_ON
 // The machine frequency may not be superior of ADC_FREQUENCY/ADC_AVG_SIZE_10
 #define MACHINE_TIMER_FREQUENCY             120           //<! machine timer frequency in Hz
@@ -63,6 +64,8 @@
 
 // SCALE TO CONVERT ADC DEFINITIONS
 #define VSCALE                              (uint16_t)1000
+
+#endif // MACHINE_ON
 
 #ifdef LED_ON
 #define     LED_PORT                PORTD
@@ -79,10 +82,9 @@
 #define     clr_led()               
 #endif // LED_ON
 
-#endif // MACHINE_ON
 
 #ifdef CAN_ON
-
+#define SPI_ON
 #define CAN_APP_SEND_STATE_FREQ     40//36000     //<! state msg frequency in Hz
 #define CAN_APP_SEND_ADC_FREQ       4//6000      //<! adc msg frequency in Hz
 

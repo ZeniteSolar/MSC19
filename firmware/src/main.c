@@ -4,19 +4,19 @@
 
 void init(void)
 {
-    #ifdef WATCHDOG_ON
-        wdt_init();
-    #endif 
- 
+
     #ifdef USART_ON
         usart_init(MYUBRR,1,1);                         // inicializa a usart
         VERBOSE_MSG_INIT(usart_send_string("\n\n\nUSART... OK!\n"));
     #endif
 
+    _delay_ms(200);
+
     #ifdef WATCHDOG_ON
         VERBOSE_MSG_INIT(usart_send_string("WATCHDOG..."));
-        wdt_reset();
+        wdt_init();
         VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
+        wdt_reset();
     #else
         VERBOSE_MSG_INIT(usart_send_string("WATCHDOG... OFF!\n"));
     #endif
@@ -25,14 +25,21 @@ void init(void)
         wdt_reset();
     #endif
 
+    #ifdef SPI_ON
+        set_bit(DDRB, PB2);     //output to be the spi master
+    #endif
+
     #ifdef CAN_ON
         VERBOSE_MSG_INIT(usart_send_string("CAN (500kbps)..."));
+        #ifdef LED_ON
+            set_led(LED2);
+        #endif  
         can_init(BITRATE_500_KBPS);
+        //can_set_mode(LOOPBACK_MODE);
         VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
         VERBOSE_MSG_INIT(usart_send_string("CAN filters..."));
-        //can_static_filter(can_filter);
+        can_static_filter(can_filter);
         VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
-        set_led(LED2);
     #else
         VERBOSE_MSG_INIT(usart_send_string("CAN... OFF!\n"));
     #endif
@@ -89,34 +96,15 @@ void init(void)
         wdt_reset();
     #endif
 
-	
-    // ------------------------------------------------------------------------
-#ifdef ENABLE_HARDWARE_OVERVOLTAGE_INTERRUPT
-	clr_bit(BatOverVoltageInterrupt_DDR,BatOverVoltageInterrupt);	// int0 as input
-	clr_bit(BatOverVoltageInterrupt_PORT,BatOverVoltageInterrupt);	// int0 without pullpup
-    EICRA |= (1<<ISC01) | (1<<ISC00);           // rising edge for int0
-    EIMSK |= (1<<INT0);                         // enables int0 interrupt
-    EIFR |= (1<<INTF0);                         // clears int0 interrupt
-#endif // ENABLE_HARDWARE_OVERVOLTAGE_INTERRUPT 
- 
-#ifdef ENABLE_HARDWARE_ENABLE_SWITCH_INTERRUPT   
-	clr_bit(Enable_DDR,Enable);					// int1 as input
-	set_bit(Enable_PORT,Enable);				// int1 with pullup
-    EICRA |= (0<<ISC11) | (0<<ISC10);           // low level for int1
-    //EIMSK |= (1<<INT1);                         // enables int1 interrupt
-    EIFR |= (1<<INTF1);                         // clears int1 interrupt
-#endif // ENABLE_HARDWARE_ENABLE_SWITCH_INTERRUPT
-
-#ifdef MACHINE_ON
-    print_configurations();
-#endif // MACHINE_ON
+    #ifdef MACHINE_ON
+        print_configurations();
+    #endif // MACHINE_ON
 
     sei();
 }
 
 int main(void)
 {
-
     init();
    
 	for(;;){
@@ -126,23 +114,6 @@ int main(void)
 
         #ifdef MACHINE_ON
             machine_run();
-        #else
-            #ifdef PWM_ON
-                #ifdef PWM_TEST
-                    #ifdef CONVERTER_TEST_WITH_FIXED_DUTYCYCLE
-                        set_pwm_duty_cycle(CONVERTER_TEST_WITH_FIXED_DUTYCYCLE_DT_VALUE);
-                    #else
-                        static uint8_t i = 0;
-                        set_pwm_duty_cycle(i++);
-                        if(i>PWM_D_MAX) i = PWM_D_MIN;
-                    #endif
-                #else
-                    #ifdef PEO_TEST
-                        read_and_check_adcs();
-                        pwm_compute();
-                    #endif
-                #endif
-            #endif
         #endif
 
 		#ifdef SLEEP_ON

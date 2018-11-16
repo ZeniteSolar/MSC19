@@ -12,8 +12,6 @@ void machine_init(void)
               | (0 << COM2B1) | (0 << COM2B0)       // do nothing
               | (0 << COM2A1) | (0 << COM2A0);      // do nothing
 
-    //clr_bit(DDRB, PB3); // output for frequency debug
-
     TCCR2B =
 #if MACHINE_TIMER_PRESCALER ==     1
                 (0 << CS22) | (0 << CS21) | (1 << CS20) // Prescaler N=1
@@ -169,7 +167,7 @@ inline void task_idle(void)
 inline void task_running(void)
 {
 #ifdef LED_ON
-    if(led_clk_div++ >= 50){
+    if(led_clk_div++ >= 2){
         cpl_led(LED1);
         led_clk_div = 0;
     }
@@ -183,7 +181,7 @@ inline void task_running(void)
 inline void task_error(void)
 {
 #ifdef LED_ON
-    if(led_clk_div++ >= 10){
+    if(led_clk_div++ >= 5){
         cpl_led(LED2);
         set_led(LED1);
         led_clk_div = 0;
@@ -225,7 +223,7 @@ inline void task_error(void)
 inline void task_reset(void)
 {   
 #ifndef WATCHDOG_ON
-    wdt_init();
+    //wdt_init();
 #endif
 
     cli();  // disable interrupts

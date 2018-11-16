@@ -62,7 +62,7 @@ inline void can_app_send_state(void)
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
-    //can_app_print_msg(&msg);
+    VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
 #endif
 }
 
@@ -86,7 +86,7 @@ inline void can_app_send_adc(void)
 
     can_send_message(&msg); 
 #ifdef VERBOSE_MSG_CAN_APP
-    can_app_print_msg(&msg);
+    VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
 #endif
 
     reset_measurements();

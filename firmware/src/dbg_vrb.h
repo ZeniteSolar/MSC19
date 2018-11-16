@@ -55,8 +55,10 @@
 
 #ifdef DEBUG_ON
 #define DEBUG_MSG(x) x
-#define DEBUG0 cpl_bit(PORTB, PB5);
-#define DEBUG1 cpl_bit(PORTB, PB4);
+//#define DEBUG0 cpl_bit(PORTB, PB2);
+//#define DEBUG1 cpl_bit(PORTB, PB2);
+#define DEBUG0
+#define DEBUG1
 #else
 #define DEBUG_MSG(x)
 #define DEBUG0
