@@ -35,7 +35,7 @@
 #define CAN_SIGNATURE_MSC19_3           253
 #define CAN_SIGNATURE_MSC19_4           254
 
-#define CAN_SIGNATURE_SELF              CAN_SIGNATURE_MSC19_1
+#define CAN_SIGNATURE_SELF              CAN_SIGNATURE_MSC19_2
 
 //------------------------------------------------------------------------------
 

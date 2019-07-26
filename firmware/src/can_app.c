@@ -73,8 +73,20 @@ inline void can_app_send_adc(void)
     msg.length                              = CAN_LENGTH_MSG_MSC19_ADC;
     msg.flags.rtr = 0;
     
-    uint16_t avg_adc0 = 
-        measurements.adc0_avg_sum / measurements.adc0_avg_sum_count;
+    #if CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_1
+    #define CONVERSION_VALUE    78.125
+    #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_2
+    #define CONVERSION_VALUE    76.85
+    #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_3
+    #define CONVERSION_VALUE	1
+    #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_4
+    #define CONVERSION_VALUE	19.196
+    #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_5
+    #define CONVERSION_VALUE	1
+    #endif
+
+    uint16_t avg_adc0 = (uint16_t)
+        (measurements.adc0_avg_sum / measurements.adc0_avg_sum_count)*CONVERSION_VALUE;
 
     msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
     msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_L]  = LOW(avg_adc0);
