@@ -54,7 +54,7 @@ void adc_init(void)
     //clr_bit(PRR0, PRTIM0);                          // Activates clock to timer0
     // MODE 2 -> CTC with TOP on OCR1
     TCCR0A  =   (1 << WGM01) | (0 << WGM00)         // mode 2
-            | (0 << COM0B1) | (0 << COM0B0)         // do nothing 
+            | (0 << COM0B1) | (0 << COM0B0)         // do nothing
             | (0 << COM0A1) | (0 << COM0A0);        // do nothing
 
     TCCR0B  =
@@ -102,26 +102,21 @@ ISR(ADC_vect)
 
     if(++adc.select > ADC_LAST_CHANNEL){
         adc.select = ADC0;             // recycles
-        
+
         if(++adc.samples >= ADC_AVG_SIZE_10){
             adc.channel[0].avg = adc.channel[0].sum >> ADC_AVG_SIZE_2;
 
             adc.samples = adc.channel[0].sum = 0;
-            adc.ready = 1;
-            
-            VERBOSE_MSG_ADC( usart_send_string("adc:") );
-            VERBOSE_MSG_ADC( usart_send_uint16(adc.channel[0].avg) );
-            VERBOSE_MSG_ADC( usart_send_char('\n') );
+            adc.ready = 1; 
         }
     }
 
     adc_select_channel(adc.select);
-                           
+
 }
- 
+
 /**
  * @brief ISR necessária para auto-trigger do ADC. Caso contrário, dispara
  * BADISR_vect.
  */
 EMPTY_INTERRUPT(TIMER0_COMPA_vect);
-
