@@ -1,7 +1,7 @@
 /**
  * @file conf.h
  *
- * @defgroup CONF Configurations 
+ * @defgroup CONF Configurations
  *
  * @brief General configuration of the system.
  *
@@ -57,7 +57,7 @@
 
 #ifdef MACHINE_ON
 // The machine frequency may not be superior of ADC_FREQUENCY/ADC_AVG_SIZE_10
-#define MACHINE_TIMER_FREQUENCY             120           //<! machine timer frequency in Hz
+#define MACHINE_TIMER_FREQUENCY             300           //<! machine timer frequency in Hz
 #define MACHINE_TIMER_PRESCALER             1024          //<! machine timer prescaler
 #define MACHINE_CLK_DIVIDER_VALUE           ((uint64_t)(uint32_t)MACHINE_TIMER_FREQUENCY*(uint32_t)ADC_AVG_SIZE_10)/(ADC_FREQUENCY)           //<! machine_run clock divider
 #define MACHINE_FREQUENCY                   (MACHINE_TIMER_FREQUENCY)/(MACHINE_CLK_DIVIDER_VALUE)
@@ -77,9 +77,9 @@
 #define     set_led(y)              set_bit(LED_PORT, y)
 #define     clr_led(y)              clr_bit(LED_PORT, y)
 #else
-#define     cpl_led()               
-#define     set_led()               
-#define     clr_led()               
+#define     cpl_led()
+#define     set_led()
+#define     clr_led()
 #endif // LED_ON
 
 
