@@ -4,9 +4,10 @@
 
 void init(void)
 {
+    cli();
 
     #ifdef USART_ON
-        usart_init(MYUBRR,1,1);                         // inicializa a usart
+        usart_init(MYUBRR,0,1);                         // inicializa a usart
         VERBOSE_MSG_INIT(usart_send_string("\n\n\nUSART... OK!\n"));
     #endif
 
@@ -40,6 +41,7 @@ void init(void)
         VERBOSE_MSG_INIT(usart_send_string("CAN filters..."));
         can_static_filter(can_filter);
         VERBOSE_MSG_INIT(usart_send_string(" OK!\n"));
+        cli();
     #else
         VERBOSE_MSG_INIT(usart_send_string("CAN... OFF!\n"));
     #endif
@@ -107,7 +109,7 @@ int main(void)
 {
     init();
    
-	for(;;){
+	for(;;){       
 		#ifdef WATCHDOG_ON
             wdt_reset();
 		#endif
@@ -121,7 +123,6 @@ int main(void)
 		#endif
 	}
 }
-
 
 /**
  * @brief se em debug, fica chaveando os pinos de debugs até o reset do watchdog
@@ -140,4 +141,3 @@ ISR(BADISR_vect)
         #endif
     }
 }
-
