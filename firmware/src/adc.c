@@ -1,32 +1,18 @@
 #include "adc.h"
 
 /**
- * @brief Changes ADC channel
- * @param __ch is the channel to be switched to
- * @return return the selected channel
- */
-inline uint8_t adc_select_channel(adc_channels_t __ch)
-{
-    if(__ch < ADC_LAST_CHANNEL ) adc.select = __ch;
-
-    ADMUX = (ADMUX & 0xF8) | adc.select; // clears the bottom 3 bits before ORing
-    return adc.select;
-}
-
-/**
  * @brief inicializa o ADC, configurado para conversão engatilhada com o timer0.
  */
 void adc_init(void)
 {
     adc.ready = 0;
-    adc.select = ADC0;
 
     //clr_bit(PRR0, PRADC);                           // Activates clock to adc
 
     // configuracao do ADC
     PORTC   =   0b00000000;                         // disables pull-up for adcs pins
     DDRC    =   0b00000000;                         // all adcs as inputs
-    DIDR0   =   0b11111111;                         // ADC0 to ADC2 as adc (digital disable)
+    DIDR0   =   0b11111111;                         // digital disable for all adcs
 
     ADMUX   =   (0 << REFS1)                        // AVcc with external capacitor at AREF pin
             | (1 << REFS0)
@@ -40,7 +26,7 @@ void adc_init(void)
             | (1 << ADTS1)
             | (1 << ADTS0);
 
-    adc_select_channel(ADC0);                       // Choose admux
+    ADMUX = (ADMUX & 0xF8) | 0;                     // Choose admux
     ADCSRA  =   (1 << ADATE)                        // ADC Auto Trigger Enable
             | (1 << ADIE)                           // ADC Interrupt Enable
             | (1 << ADEN)                           // ADC Enable
@@ -89,30 +75,21 @@ void adc_init(void)
  */
 ISR(ADC_vect)
 {
+    #ifdef FAKE_ADC_ON
+        adc.sum += FAKE_ADC;
+    #else // FAKE_ADC_ON
+        #ifdef ADC_8BITS
+            adc.sum += ADCH;
+        #else // ADC_8BITS
+            adc.sum += ADC;
+        #endif // ADC_8BITS
+    #endif // FAKE_ADC_ON
 
-#ifdef FAKE_ADC_ON
-    adc.channel[adc.select].sum += FAKE_ADC;
-#else // FAKE_ADC_ON
-    #ifdef ADC_8BITS
-    adc.channel[adc.select].sum += ADCH;
-    #else // ADC_8BITS
-    adc.channel[adc.select].sum += ADC;
-    #endif // ADC_8BITS
-#endif // FAKE_ADC_ON
-
-    if(++adc.select > ADC_LAST_CHANNEL){
-        adc.select = ADC0;             // recycles
-
-        if(++adc.samples >= ADC_AVG_SIZE_10){
-            adc.channel[0].avg = adc.channel[0].sum >> ADC_AVG_SIZE_2;
-
-            adc.samples = adc.channel[0].sum = 0;
-            adc.ready = 1; 
-        }
+    if(++adc.samples >= ADC_AVG_SIZE_10){
+        adc0.ready = 1;
+        adc0.value = adc.sum;
+        adc.samples = adc.sum = 0;
     }
-
-    adc_select_channel(adc.select);
-
 }
 
 /**
