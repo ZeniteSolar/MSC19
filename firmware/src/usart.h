@@ -39,7 +39,7 @@ void usart_send_uint16(uint16_t num);
 void usart_send_int32(int32_t num);
 void usart_send_uint32(uint32_t num);
 
-void usart_send_int64(int32_t num);
-void usart_send_uint64(uint32_t num);
+void usart_send_int64(int64_t num);
+void usart_send_uint64(uint64_t num);
 
 #endif /* ifndef USART_H */
