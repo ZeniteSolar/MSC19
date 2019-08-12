@@ -83,6 +83,7 @@ inline void set_state_running(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>RUNNING STATE\n"));
     state_machine = STATE_RUNNING;
+    reset_measurements();
 }
 
 /**
@@ -101,11 +102,11 @@ inline void print_configurations(void)
 {    
     VERBOSE_MSG_MACHINE(usart_send_string("CONFIGURATIONS:\n"));
     
-    VERBOSE_MSG_MACHINE(usart_send_string("\nadc_f: "));
-    VERBOSE_MSG_MACHINE(usart_send_uint16( ADC_FREQUENCY ));
-    VERBOSE_MSG_MACHINE(usart_send_char(','));
+    VERBOSE_MSG_MACHINE(usart_send_string("\nadc_freq: "));
+    VERBOSE_MSG_MACHINE(usart_send_uint32( ADC_FREQUENCY ));
+    VERBOSE_MSG_MACHINE(usart_send_string("\nadc_avg_size: "));
     VERBOSE_MSG_MACHINE(usart_send_uint16( ADC_AVG_SIZE_10 ));
-    VERBOSE_MSG_MACHINE(usart_send_string("\nmachine_f: "));
+    VERBOSE_MSG_MACHINE(usart_send_string("\nmachine_freq: "));
     VERBOSE_MSG_MACHINE(usart_send_uint16( MACHINE_FREQUENCY ));
 
     VERBOSE_MSG_MACHINE(usart_send_char('\n'));
@@ -188,7 +189,6 @@ inline void task_error(void)
     }
 #endif
 
-
     total_errors++;         // incrementa a contagem de erros
     VERBOSE_MSG_ERROR(usart_send_string("The error code is: "));
     VERBOSE_MSG_ERROR(usart_send_uint16(error_flags.all));
@@ -257,7 +257,33 @@ inline void reset_measurements(void)
     measurements.adc0_avg_sum_count = 0;
     measurements.adc0_avg_sum = 0;
     measurements.adc0_max = 0;
-    measurements.adc0_min = 1023;
+    measurements.adc0_min = 65535;      // should start at maximum possible value
+}
+
+
+inline void compute_adc0_avg(void)
+{
+    // avg
+    measurements.adc0_avg = adc0.value * (500000000.0f / (1024.f * ADC_AVG_SIZE_10));
+
+    // max avg
+    if(measurements.adc0_avg < measurements.adc0_min) 
+        measurements.adc0_min = measurements.adc0_avg;
+    // min avg
+    if(measurements.adc0_avg > measurements.adc0_max) 
+        measurements.adc0_max = measurements.adc0_avg;
+
+    // avg for canbus msgs
+    measurements.adc0_avg_sum_count++;
+    measurements.adc0_avg_sum += measurements.adc0_avg;
+
+    // usart_send_uint32(adc0);
+    // usart_send_uint32(measurements.adc0_avg);
+    // usart_send_char(',');
+    // usart_send_uint32(measurements.adc0_avg_sum);
+    // usart_send_char(',');
+    // usart_send_uint16(measurements.adc0_avg_sum_count);
+    // usart_send_string("\n\n\n\n");
 }
 
 /**
@@ -267,24 +293,14 @@ inline void machine_run(void)
 {
     //print_infos();
     
-
     if(machine_clk){
         machine_clk = 0;
+
     #ifdef ADC_ON
-        if(adc.ready){
-            adc.ready = 0;
+        if(adc0.ready){
+            adc0.ready = 0;
 
-            measurements.adc0_avg = ADC0_AVG;
-                //* ADC0_ANGULAR_COEF
-                //+ ADC0_LINEAR_COEF;
-            
-            if(measurements.adc0_avg < measurements.adc0_min) 
-                measurements.adc0_min = measurements.adc0_avg;
-            if(measurements.adc0_avg > measurements.adc0_max) 
-                measurements.adc0_max = measurements.adc0_avg;
-
-            measurements.adc0_avg_sum_count++;
-            measurements.adc0_avg_sum += measurements.adc0_avg;
+            compute_adc0_avg();
 
             if(error_flags.all){
                 print_system_flags();
@@ -329,10 +345,7 @@ ISR(TIMER2_COMPA_vect)
 {
     if(machine_clk_divider++ == MACHINE_CLK_DIVIDER_VALUE){
         /*if(machine_clk){
-            for(;;){
-                pwm_reset();
                 VERBOSE_MSG_ERROR(if(machine_clk) usart_send_string("\nERROR: CLOCK CONFLICT!!!\n"));
-            }
         }*/
         machine_clk = 1;
         machine_clk_divider = 0;
