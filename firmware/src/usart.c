@@ -279,3 +279,16 @@ inline void usart_send_int64(int64_t num)
     #undef BASE
     #undef FILL    
 }
+
+inline void usart_send_float(float num)
+{
+    #define LEN     7               // length of the string w/ sign, dot ('.') and null terminator
+    #define PREC    3               // precision: digits before dot. 
+    #define FILL    '0'             // character to fill non-used algarisms.
+
+    char str[LEN] = {FILL};
+
+    dtostrf(num, LEN, PREC, str);
+
+    usart_send_string(str);
+}
