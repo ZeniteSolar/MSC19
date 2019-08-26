@@ -80,56 +80,77 @@ inline void can_app_send_adc(void)
     uint16_t avg_adc0_converted;
     // float avg_adc0_converted_f;
 
-
+    /* Valores da regressão polinomial para o sensor 1*/
     #if CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_1
-    #define a -17641.6751612171f
-    #define b 79157.5035175103f
-    #define c -21.188134273f
+    #define adc_adjust 1.0153122815934938
+    #define a0 -0.007214537133162624f * adc_adjust
+    #define b0 79.75377726031437f * adc_adjust
+    #define c0 -70.91969971593136f * adc_adjust
+    avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 2) + b0 * avg_adc0 );
 
+    /* Valores da regressão polinomial para o sensor 2*/
     #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_2
-    #define a 263789.4883258151f
-    #define b 75792.7668582234f
-    #define c 0.5964624157f
+    #define adc_adjust 0.9876390605686033          /* fator de correção para o ADC */
+    #define a0 -0.004247907622453196f * adc_adjust
+    #define b0 79.14536022160605f * adc_adjust
+    #define c0 134.28980589764254f * adc_adjust
+    avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 2) + b0 * avg_adc0 + c0);
 
+    /* Valores da regressão polinomial para o sensor 3*/
     #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_3
-    avg_adc0_converted = avg_adc0;
-    
-    /* Valores da regressão polinomial para o sensor 4*/                                                         
+    #define adc_adjust 1.0125156445556946           /* fator de correção para o ADC */
+    #define a0 -0.004090813302699868f * adc_adjust
+    #define b0 79.87059674657795f * adc_adjust
+    #define c0 11.097134814989177f * adc_adjust
+    avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 2) + b0 * avg_adc0 + c0);
+
+    /* Valores da regressão polinomial para o sensor 4*/
     #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_4
-    #define a0 24798.776985043725f
-    #define b0 -612.0228597161082f
-    #define c0 5.0435655377663f
-    #define a1 33.1566208598615f
-    #define b1 -0.0433422905939f
-    #define c1 0.0001235687722f
-    if(avg_adc0 <= 34){                             
+    // breaks:
+    //  [ 35.33670772  42.91257191 147.61808008]
+    #define current_adjust 1.0514018691588785       /* fator de correção para a corrente */
+    #define a0 4.8551075756229f * current_adjust
+    #define b0 -596.7507265541577f * current_adjust
+    #define c0 24491.777388889182f * current_adjust
+    #define d0 -334549.3640250371f * current_adjust
+    #define a1 0.0001190802454f * current_adjust
+    #define b1 -0.04230098869f * current_adjust
+    #define c1 32.739227067299f * current_adjust
+    #define d1 -125.1678007132723f * current_adjust
+    if(avg_adc0 <= 35){
       avg_adc0_converted = 0;
     }else if(avg_adc0 < 42){
-      avg_adc0_converted = (uint16_t) (a0 + b0*avg_adc0 + c0*powf(avg_adc0, 2));
+      avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 3) + b0 * powf(avg_adc0, 2)+ c0 * avg_adc0 + d0);
       // avg_adc0_converted_f = b1 * avg_adc0;
       // avg_adc0_converted += (uint16_t) (a1 + (avg_adc0_converted_f * (1.f + (c1 / b1))));
     }else{
-      avg_adc0_converted = (uint16_t) (a1 + b1*avg_adc0 + c1*powf(avg_adc0, 2));
+      avg_adc0_converted = (uint16_t) (a1 * powf(avg_adc0, 3) + b1 * powf(avg_adc0, 2)+ c1 * avg_adc0 + d1);
     }
-    
+
     /* Valores da regressão polinomial para o sensor 5*/
     #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_5
-    #define a0 -22049.50578228684f
-    #define b0 650.8572477953808f
-    #define c0 -6.3325473332169f
-    #define a1 25.6822785042459f
-    #define b1 -0.0059190761766f
-    #define c1 -6.240086e-07f
+    // breaks:
+    //  [ 32.5787237   37.72656059 744.76651233]
+    #define coef_adjust 1.1386079714455681              /* Coeficiente de ajuste entre as placas */
+    #define current_adjust 1.065984930032293            /* fator de correção para a corrente */
+
+    #define a0 -6.2127297775771f * current_adjust * coef_adjust
+    #define b0 642.5007704667008f * current_adjust * coef_adjust
+    #define c0 -21901.214999298354f * current_adjust * coef_adjust
+    #define d0 246339.3460664462f * current_adjust * coef_adjust
+    #define a1 -6.127458e-07f * current_adjust * coef_adjust
+    #define b1 -0.0058459342976f * current_adjust * coef_adjust
+    #define c1 25.5236526067201f * current_adjust * coef_adjust
+    #define d1 -1.677696304585f * current_adjust * coef_adjust
     if(avg_adc0 <= 32){
       avg_adc0_converted = 0;
     }else if(avg_adc0 < 37){
-      avg_adc0_converted = (uint16_t) (a0 + b0*avg_adc0 + c0*powf(avg_adc0, 2));
-      // avg_adc0_converted_f = b1 * avg_adc0;
-      // avg_adc0_converted += (uint16_t) (a1 + (avg_adc0_converted_f * (1.f + (c1 / b1))));
+      avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 3) + b0 * powf(avg_adc0, 2)+ c0 * avg_adc0 + d0);
     }else{
-      avg_adc0_converted = (uint16_t) (a1 + b1*avg_adc0 + c1*powf(avg_adc0, 2));
+      avg_adc0_converted = (uint16_t) (a1 * powf(avg_adc0, 3) + b1 * powf(avg_adc0, 2)+ c1 * avg_adc0 + d1);
     }
     #endif
+
 
     msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
     msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_L]  = LOW(avg_adc0_converted);
