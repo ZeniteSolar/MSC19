@@ -24,7 +24,6 @@
 #define VERBOSE_ON_INIT
 #define VERBOSE_ON_ERROR
 
-
 // MODULES ACTIVATION
 #define USART_ON
 #define CAN_ON
@@ -35,6 +34,7 @@
 #define WATCHDOG_ON
 #define SLEEP_ON
 
+#define CAN_SIGNATURE_SELF                  CAN_SIGNATURE_MSC19_1
 
 #ifdef ADC_ON
 // ADC CONFIGURATION
