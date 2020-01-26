@@ -53,13 +53,13 @@ inline void can_app_task(void)
 inline void can_app_send_state(void)
 {
     can_t msg;
-    msg.id                                  = CAN_FILTER_MSG_MSC19_STATE;
-    msg.length                              = CAN_LENGTH_MSG_STATE;
+    msg.id                                  = CAN_MSG_MSC19_1_STATE_ID;
+    msg.length                              = CAN_MSG_GENERIC_STATE_LENGTH;
     msg.flags.rtr = 0;
 
-    msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
-    msg.data[CAN_STATE_MSG_STATE_BYTE]      = (uint8_t) state_machine;
-    msg.data[CAN_STATE_MSG_ERROR_BYTE]      = error_flags.all;
+    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
+    msg.data[CAN_MSG_GENERIC_STATE_STATE_BYTE]      = (uint8_t) state_machine;
+    msg.data[CAN_MSG_GENERIC_STATE_ERROR_BYTE]      = error_flags.all;
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
@@ -70,8 +70,8 @@ inline void can_app_send_state(void)
 inline void can_app_send_adc(void)
 {
     can_t msg;
-    msg.id                                  = CAN_FILTER_MSG_MSC19_ADC;
-    msg.length                              = CAN_LENGTH_MSG_MSC19_ADC;
+    msg.id                                  = CAN_MSG_MSC19_1_ADC_ID;
+    msg.length                              = CAN_MSG_MSC19_1_ADC_ID;
     msg.flags.rtr = 0;
 
     uint16_t avg_adc0 =
@@ -152,13 +152,13 @@ inline void can_app_send_adc(void)
     #endif
 
 
-    msg.data[CAN_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
-    msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_L]  = LOW(avg_adc0_converted);
-    msg.data[CAN_MSG_MSC19_ADC_AVG_BYTE_H]  = HIGH(avg_adc0_converted);
-    msg.data[CAN_MSG_MSC19_ADC_MIN_BYTE_L]  = LOW(measurements.adc0_min);
-    msg.data[CAN_MSG_MSC19_ADC_MIN_BYTE_H]  = HIGH(measurements.adc0_min);
-    msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_L]  = LOW(measurements.adc0_max);
-    msg.data[CAN_MSG_MSC19_ADC_MAX_BYTE_H]  = HIGH(measurements.adc0_max);
+    msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
+    msg.data[CAN_MSG_MSC19_1_ADC_AVG_L_BYTE]  = LOW(avg_adc0_converted);
+    msg.data[CAN_MSG_MSC19_1_ADC_AVG_L_BYTE]  = HIGH(avg_adc0_converted);
+    msg.data[CAN_MSG_MSC19_1_ADC_MIN_L_BYTE]  = LOW(measurements.adc0_min);
+    msg.data[CAN_MSG_MSC19_1_ADC_MIN_L_BYTE]  = HIGH(measurements.adc0_min);
+    msg.data[CAN_MSG_MSC19_1_ADC_MAX_L_BYTE]  = LOW(measurements.adc0_max);
+    msg.data[CAN_MSG_MSC19_1_ADC_MAX_L_BYTE]  = HIGH(measurements.adc0_max);
 
     can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
@@ -169,16 +169,16 @@ inline void can_app_send_adc(void)
 }
 
 /**
- * @brief extracts the specific MIC17 STATE message
+ * @brief extracts the specific MIC19 STATE message
  * @param *msg pointer to the message to be extracted
  */
 inline void can_app_extractor_mic17_state(can_t *msg)
 {
     // TODO:
     //  - se tiver em erro, desligar acionamento
-    if(msg->data[CAN_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC17){
+    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19){
         // zerar contador
-        if(msg->data[CAN_STATE_MSG_ERROR_BYTE]){
+        if(msg->data[CAN_MSG_GENERIC_STATE_ERROR_BYTE]){
             //ERROR!!!
         }
         /*if(contador == maximo)*/{
@@ -193,9 +193,9 @@ inline void can_app_extractor_mic17_state(can_t *msg)
  */
 inline void can_app_msg_extractors_switch(can_t *msg)
 {
-    if(msg->data[CAN_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC17){
+    if(msg->data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE] == CAN_SIGNATURE_MIC19){
         switch(msg->id){
-            case CAN_FILTER_MSG_MIC17_STATE:
+            case CAN_MSG_MIC19_STATE_ID:
 #ifdef USART_ON
                 VERBOSE_MSG_CAN_APP(usart_send_string("got a state msg: "));
 #endif
@@ -218,11 +218,11 @@ inline void can_app_msg_extractors_switch(can_t *msg)
 inline void check_can(void)
 {
     // If no messages is received from mic17 for
-    // CAN_APP_CHECKS_WITHOUT_MIC17_MSG cycles, than it go to a specific error state.
+    // CAN_APP_CHECKS_WITHOUT_MIC19_MSG cycles, than it go to a specific error state.
     //VERBOSE_MSG_CAN_APP(usart_send_string("checks: "));
     //VERBOSE_MSG_CAN_APP(usart_send_uint16(can_app_checks_without_mic17_msg));
 #ifdef CAN_DEPENDENT
-    if(can_app_checks_without_mic17_msg++ >= CAN_APP_CHECKS_WITHOUT_MIC17_MSG){
+    if(can_app_checks_without_mic17_msg++ >= CAN_APP_CHECKS_WITHOUT_MIC19_MSG){
 #ifdef USART_ON
         VERBOSE_MSG_CAN_APP(usart_send_string("Error: too many cycles withtou message.\n"));
 #endif
