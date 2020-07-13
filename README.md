@@ -79,7 +79,7 @@ Este módulo é reponsável por realizar as medições de tensão ou corrente e 
 
 ### Sinal de saída
 
-![Curva de saída](https://github.com/ZeniteSolar/MSC19/tree/master/sensor/img/output_example.png?raw=true)
+![Curva de saída](https://github.com/ZeniteSolar/MSC19/blob/master/sensor/img/output_example.png?raw=true)
 
 
 
