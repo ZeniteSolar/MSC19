@@ -26,7 +26,7 @@
 
 // MODULES ACTIVATION
 #define USART_ON
-#define CAN_ON
+//#define CAN_ON
 //#define CAN_DEPENDENT
 #define ADC_ON
 #define MACHINE_ON
@@ -39,13 +39,10 @@
 #ifdef ADC_ON
 // ADC CONFIGURATION
 // note that changing ADC_FREQUENCY may cause problems with avg_sum_samples
-#define ADC_FREQUENCY                       10000 // 20000
+#define ADC_FREQUENCY                       500000
 #define ADC_TIMER_PRESCALER                 8
-#define ADC0_AVG                            adc.channel[ADC0].avg
-#define ADC0_ANGULAR_COEF                   10000 //(40000/((4/5)*1024))
-#define ADC0_LINEAR_COEF                    0
-#define ADC_AVG_SIZE_2                      7                  // in base 2
-#define ADC_AVG_SIZE_10                     128                // in base 10
+#define ADC_AVG_SIZE_2                      10                  // in base 2
+#define ADC_AVG_SIZE_10                     4096                // in base 10
 
 //#define FAKE_ADC_ON
 #ifdef FAKE_ADC_ON
@@ -57,7 +54,7 @@
 
 #ifdef MACHINE_ON
 // The machine frequency may not be superior of ADC_FREQUENCY/ADC_AVG_SIZE_10
-#define MACHINE_TIMER_FREQUENCY             300           //<! machine timer frequency in Hz
+#define MACHINE_TIMER_FREQUENCY             1000           //<! machine timer frequency in Hz
 #define MACHINE_TIMER_PRESCALER             1024          //<! machine timer prescaler
 #define MACHINE_CLK_DIVIDER_VALUE           ((uint64_t)(uint32_t)MACHINE_TIMER_FREQUENCY*(uint32_t)ADC_AVG_SIZE_10)/(ADC_FREQUENCY)           //<! machine_run clock divider
 #define MACHINE_FREQUENCY                   (MACHINE_TIMER_FREQUENCY)/(MACHINE_CLK_DIVIDER_VALUE)

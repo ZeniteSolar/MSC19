@@ -17,7 +17,7 @@
 
 void sleep_init(void)
 {
-	set_sleep_mode(SLEEP_MODE_IDLE);
+	set_sleep_mode(SLEEP_MODE_ADC);
 }
 
 #endif /* ifndef SLEEP_H */

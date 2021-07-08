@@ -13,6 +13,8 @@
 #include <avr/io.h>
 #include <avr/wdt.h>
 #include <avr/interrupt.h>
+#include <avr/sleep.h>
+#include <math.h>
 
 #include "conf.h"
 
@@ -56,13 +58,14 @@ typedef union error_flags{
 }error_flags_t;
 
 typedef struct measurements{
-    uint16_t    adc0_avg;       // average value of ADC0
+    uint32_t    adc0_avg;       // average value of ADC0
     uint16_t    adc0_avg_sum_count;
     uint64_t    adc0_avg_sum;   // average value of ADC0
     uint16_t    adc0_min;       // period minimum value of ADC0
     uint16_t    adc0_max;       // period maximum value of ADC0
 }measurements_t;
 
+void compute_adc0_avg(void);
 
 // machine checks
 void check_buffers(void);
