@@ -34,7 +34,7 @@
 #define WATCHDOG_ON
 #define SLEEP_ON
 
-#define CAN_SIGNATURE_SELF                  CAN_SIGNATURE_MSC19_1
+#define CAN_SIGNATURE_SELF                  CAN_SIGNATURE_MSC19_4
 
 #ifdef ADC_ON
 // ADC CONFIGURATION

@@ -1,5 +1,7 @@
 #include "adc.h"
 
+volatile adc_t adc;
+
 /**
  * @brief Changes ADC channel
  * @param __ch is the channel to be switched to
@@ -107,7 +109,7 @@ ISR(ADC_vect)
             adc.channel[0].avg = adc.channel[0].sum >> ADC_AVG_SIZE_2;
 
             adc.samples = adc.channel[0].sum = 0;
-            adc.ready = 1; 
+            adc.ready = 1;
         }
     }
 

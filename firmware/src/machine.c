@@ -1,7 +1,16 @@
 #include "machine.h"
 
+volatile state_machine_t state_machine;
+volatile system_flags_t system_flags;
+volatile error_flags_t error_flags;
+volatile measurements_t measurements;
+volatile uint8_t machine_clk;
+volatile uint8_t machine_clk_divider;
+volatile uint8_t total_errors;           // Contagem de ERROS
+volatile uint8_t led_clk_div;
+
 /**
- * @brief 
+ * @brief
  */
 void machine_init(void)
 {
@@ -38,7 +47,7 @@ void machine_init(void)
 
     set_machine_initial_state();
     set_state_initializing();
-} 
+}
 
 /**
  * @brief set machine initial state
@@ -60,7 +69,7 @@ inline void set_state_error(void)
 
 /**
 * @brief set initializing state
-*/ 
+*/
 inline void set_state_initializing(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>INITIALIZING STATE\n"));
@@ -69,7 +78,7 @@ inline void set_state_initializing(void)
 
 /**
 * @brief set idle state
-*/ 
+*/
 inline void set_state_idle(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>IDLE STATE\n"));
@@ -78,7 +87,7 @@ inline void set_state_idle(void)
 
 /**
 * @brief set running state
-*/ 
+*/
 inline void set_state_running(void)
 {
     VERBOSE_MSG_MACHINE(usart_send_string("\n>>>RUNNING STATE\n"));
@@ -98,9 +107,9 @@ inline void set_state_reset(void)
  * @breif prints the configurations and definitions
  */
 inline void print_configurations(void)
-{    
+{
     VERBOSE_MSG_MACHINE(usart_send_string("CONFIGURATIONS:\n"));
-    
+
     VERBOSE_MSG_MACHINE(usart_send_string("\nadc_f: "));
     VERBOSE_MSG_MACHINE(usart_send_uint16( ADC_FREQUENCY ));
     VERBOSE_MSG_MACHINE(usart_send_char(','));
@@ -128,7 +137,7 @@ inline void print_error_flags(void)
     //VERBOSE_MSG_MACHINE(usart_send_string(" errFl: "));
     //VERBOSE_MSG_MACHINE(usart_send_char(48+error_flags.no_canbus));
 }
- 
+
 /**
  * @brief Checks if the system is OK to run
  */
@@ -153,7 +162,7 @@ inline void task_idle(void)
     if(led_clk_div++ >= 30){
         cpl_led(LED1);
         led_clk_div = 0;
-    }        
+    }
 #endif
 
     set_state_running();
@@ -198,11 +207,11 @@ inline void task_error(void)
         VERBOSE_MSG_ERROR(usart_send_string("\t - No canbus communication with MIC19!\n"));
     if(!error_flags.all)
         VERBOSE_MSG_ERROR(usart_send_string("\t - Oh no, it was some unknown error.\n"));
- 
+
     VERBOSE_MSG_ERROR(usart_send_string("The error level is: "));
     VERBOSE_MSG_ERROR(usart_send_uint16(total_errors));
     VERBOSE_MSG_ERROR(usart_send_char('\n'));
-    
+
     if(total_errors < 2){
         VERBOSE_MSG_ERROR(usart_send_string("I will reset the machine state.\n"));
     }
@@ -210,18 +219,18 @@ inline void task_error(void)
         VERBOSE_MSG_ERROR(usart_send_string("The watchdog will reset the whole system.\n"));
         set_state_reset();
     }
-    
+
 #ifdef LED_ON
     cpl_led(LED2);
 #endif
     set_state_initializing();
 }
-                    
+
 /**
  * @brief reset error task just freezes the processor and waits for watchdog
  */
 inline void task_reset(void)
-{   
+{
 #ifndef WATCHDOG_ON
     //wdt_init();
 #endif
@@ -244,7 +253,7 @@ void print_infos(void)
             //print_error_flags();
             break;
         case 2:
-            //print_control_others(); 
+            //print_control_others();
         default:
             //VERBOSE_MSG_MACHINE(usart_send_char('\n'));
             i = 0;
@@ -266,7 +275,7 @@ inline void reset_measurements(void)
 inline void machine_run(void)
 {
     //print_infos();
-    
+
 
     if(machine_clk){
         machine_clk = 0;
@@ -277,10 +286,10 @@ inline void machine_run(void)
             measurements.adc0_avg = ADC0_AVG;
                 //* ADC0_ANGULAR_COEF
                 //+ ADC0_LINEAR_COEF;
-            
-            if(measurements.adc0_avg < measurements.adc0_min) 
+
+            if(measurements.adc0_avg < measurements.adc0_min)
                 measurements.adc0_min = measurements.adc0_avg;
-            if(measurements.adc0_avg > measurements.adc0_max) 
+            if(measurements.adc0_avg > measurements.adc0_max)
                 measurements.adc0_max = measurements.adc0_avg;
 
             measurements.adc0_avg_sum_count++;
@@ -306,8 +315,8 @@ inline void machine_run(void)
                     task_running();
                     #ifdef CAN_ON
                         can_app_task();
-                    #endif /* CAN_ON */   
-                    
+                    #endif /* CAN_ON */
+
                     break;
                 case STATE_ERROR:
                     task_error();
@@ -317,7 +326,7 @@ inline void machine_run(void)
                     task_reset();
                     break;
             }
-        } 
+        }
     #endif /* ADC_ON */
     }
 }
@@ -338,4 +347,3 @@ ISR(TIMER2_COMPA_vect)
         machine_clk_divider = 0;
     }
 }
-
