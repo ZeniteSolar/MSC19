@@ -111,7 +111,7 @@ inline void can_app_send_adc(void)
     #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_4
     // breaks:
     //  [ 35.33670772  42.91257191 147.61808008]
-    #define current_adjust 1.0514018691588785       /* fator de correção para a corrente */
+    #define current_adjust 1.0514018691588785 * 4   /* fator de correção para a corrente */
     #define a0 4.8551075756229f * current_adjust
     #define b0 -596.7507265541577f * current_adjust
     #define c0 24491.777388889182f * current_adjust
