@@ -3,7 +3,6 @@
 
 uint32_t can_app_send_state_clk_div;
 uint32_t can_app_send_adc_clk_div;
-
 /**
  * @brief Prints a can message via usart
  */
@@ -85,15 +84,15 @@ inline void can_app_send_adc(void)
 
     /* Valores da regressão polinomial para o sensor 1*/
     #if CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_1
-    #define adc_adjust 1.0153122815934938
+    #define adc_adjust 0.6269396001647823
     #define a0 -0.007214537133162624f * adc_adjust
     #define b0 79.75377726031437f * adc_adjust
     #define c0 -70.91969971593136f * adc_adjust
-    avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 2) + b0 * avg_adc0 );
+    avg_adc0_converted = (uint16_t) (a0 * powf(avg_adc0, 2) + b0 * avg_adc0);
 
     /* Valores da regressão polinomial para o sensor 2*/
     #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_2
-    #define adc_adjust 0.9876390605686033          /* fator de correção para o ADC */
+    #define adc_adjust 0.6145057154433746          /* fator de correção para o ADC */
     #define a0 -0.004247907622453196f * adc_adjust
     #define b0 79.14536022160605f * adc_adjust
     #define c0 134.28980589764254f * adc_adjust
@@ -101,7 +100,7 @@ inline void can_app_send_adc(void)
 
     /* Valores da regressão polinomial para o sensor 3*/
     #elif CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_3
-    #define adc_adjust 1.0125156445556946           /* fator de correção para o ADC */
+    #define adc_adjust 0.6097323676946321          /* fator de correção para o ADC */
     #define a0 -0.004090813302699868f * adc_adjust
     #define b0 79.87059674657795f * adc_adjust
     #define c0 11.097134814989177f * adc_adjust
@@ -157,13 +156,12 @@ inline void can_app_send_adc(void)
 
     msg.data[CAN_MSG_GENERIC_STATE_SIGNATURE_BYTE]            = CAN_SIGNATURE_SELF;
     msg.data[CAN_MSG_MSC19_1_ADC_AVG_L_BYTE]  = LOW(avg_adc0_converted);
-    msg.data[CAN_MSG_MSC19_1_ADC_AVG_L_BYTE]  = HIGH(avg_adc0_converted);
+    msg.data[CAN_MSG_MSC19_1_ADC_AVG_H_BYTE]  = HIGH(avg_adc0_converted);
     msg.data[CAN_MSG_MSC19_1_ADC_MIN_L_BYTE]  = LOW(measurements.adc0_min);
-    msg.data[CAN_MSG_MSC19_1_ADC_MIN_L_BYTE]  = HIGH(measurements.adc0_min);
+    msg.data[CAN_MSG_MSC19_1_ADC_MIN_H_BYTE]  = HIGH(measurements.adc0_min);
     msg.data[CAN_MSG_MSC19_1_ADC_MAX_L_BYTE]  = LOW(measurements.adc0_max);
-    msg.data[CAN_MSG_MSC19_1_ADC_MAX_L_BYTE]  = HIGH(measurements.adc0_max);
+    msg.data[CAN_MSG_MSC19_1_ADC_MAX_H_BYTE]  = HIGH(measurements.adc0_max);
 
-    can_send_message(&msg);
 #ifdef VERBOSE_MSG_CAN_APP
     VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
 #endif
