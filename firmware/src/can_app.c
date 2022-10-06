@@ -79,12 +79,15 @@ inline void can_app_send_adc(void)
     uint16_t avg_adc0 =
         (measurements.adc0_avg_sum / measurements.adc0_avg_sum_count);
 
+    if (measurements.adc0_avg_sum_count == 0)
+        return;
+
     uint16_t avg_adc0_converted;
     // float avg_adc0_converted_f;
 
     /* Valores da regressão polinomial para o sensor 1*/
     #if CAN_SIGNATURE_SELF == CAN_SIGNATURE_MSC19_1
-    #define adc_adjust 0.6269396001647823
+    #define adc_adjust 0.624633597038939
     #define a0 -0.007214537133162624f * adc_adjust
     #define b0 79.75377726031437f * adc_adjust
     #define c0 -70.91969971593136f * adc_adjust
@@ -161,6 +164,9 @@ inline void can_app_send_adc(void)
     msg.data[CAN_MSG_MSC19_1_ADC_MIN_H_BYTE]  = HIGH(measurements.adc0_min);
     msg.data[CAN_MSG_MSC19_1_ADC_MAX_L_BYTE]  = LOW(measurements.adc0_max);
     msg.data[CAN_MSG_MSC19_1_ADC_MAX_H_BYTE]  = HIGH(measurements.adc0_max);
+
+    usart_send_uint16(avg_adc0_converted);
+    usart_send_char('\n');
 
 #ifdef VERBOSE_MSG_CAN_APP
     VERBOSE_MSG_CAN_APP(can_app_print_msg(&msg));
